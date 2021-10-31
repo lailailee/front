@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: 'base-footer'
+  name: 'BaseFooter'
 }
 </script>
 <style lang="scss" scoped>

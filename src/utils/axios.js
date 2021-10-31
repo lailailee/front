@@ -38,7 +38,7 @@ class HttpRequest {
     instance.interceptors.request.use(
       config => {
         console.log('interceptors', baseConfig.company)
-        config.headers.Company = baseConfig.company
+        // config.headers.Company = baseConfig.company
         return config
       },
       err => {
@@ -51,15 +51,42 @@ class HttpRequest {
 
     // 响应请求的拦截器
     instance.interceptors.response.use(
-      res => {
-        // Any status code that lie within the range of 2xx cause this function to trigger
-        // Do something with response data
-        // const key = res.config.url + '&' + res.config.method
-        // this.removePending(key)
-        // if (res.status === 200) {
-        return Promise.resolve(res)
-        // } else {
-        //   return Promise.reject(res)
+      response => {
+        const res = response.data
+        // // const logReg = new RegExp('log')
+        // // if (response.config.url.match(logReg)) {
+        // //   return {
+        // //     code: 0,
+        // //     data: res
+        // //   }
+        // // }
+        // if (res.code !== 0) {
+        //   if (res.code) {
+        //     // 50008: Illegal token; 50012: Other clients logged in; 50014: Token expired;
+        //     if (res.code === 9) {
+        //       // 过期
+        //       localStorage.clear()
+        //       router.push({ path: '/' })
+        //       Message({
+        //         message: 'token过期，请重新登录',
+        //         type: 'error',
+        //         duration: 5 * 1000
+        //       })
+        //     } else if (res.code === 8) {
+        //       Message({
+        //         message: 'token错误，请重新登录',
+        //         type: 'error',
+        //         duration: 5 * 1000
+        //       })
+        //       // 过期
+        //       localStorage.clear()
+        //       router.push({ path: '/' })
+        //     }
+        //   }
+        return res
+        // return Promise.reject(new Error(res.code || 'Error'))
+        //   } else {
+        //   // return res
         // }
       },
       err => {

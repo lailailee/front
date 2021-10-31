@@ -5,39 +5,37 @@
         <div class="mask">
           <div class="title">性能优化 MyBatis-Plu</div>
           <div class="detail">
-            <span class="date item"
-              ><i class="iconfont riqi"></i>2020-11-03</span
-            >
+            <span class="date item"><i class="iconfont riqi" />2020-11-03</span>
             ｜
-            <span class="category item"
-              ><i class="iconfont leimupinleifenleileibie2"></i>项目分类</span
-            >
+            <span class="category item"><i class="iconfont leimupinleifenleileibie2" />项目分类</span>
             ｜
-            <span class="tag item"
-              ><i class="iconfont biaoqian"></i>项目标签</span
-            >
+            <span class="tag item"><i class="iconfont biaoqian" />项目标签</span>
             |
-            <span class="tag item"><i class="iconfont yanjing"></i>1111</span>
+            <span class="tag item"><i class="iconfont yanjing" />1111</span>
           </div>
         </div>
       </div>
       <div class="picture">
-        <img class="image" src="@/assets/image/blog.jpg" alt="" />
+        <!-- <img
+          class="image"
+          src="@/assets/image/blog.jpg"
+          alt=""
+        > -->
       </div>
     </div>
     <div class="artcicle-wrapper">
       <div class="md-wrapper">
         <mavon-editor
+          v-model="code"
           class="mavon-editor"
           :ishljs="true"
           :subfield="false"
-          :boxShadow="false"
-          defaultOpen="preview"
-          :toolbarsFlag="false"
-          codeStyle="atom-one-dark"
-          previewBackground="#fff"
-          :externalLink="externalLink"
-          v-model="code"
+          :box-shadow="false"
+          default-open="preview"
+          :toolbars-flag="false"
+          code-style="atom-one-dark"
+          preview-background="#fff"
+          :external-link="externalLink"
         />
       </div>
     </div>
@@ -47,15 +45,15 @@
 <script>
 import test from './test.md'
 import marked from 'marked'
-import 'github-markdown-css/github-markdown.css'
+// import 'github-markdown-css/github-markdown.css'
 // import '@/assets/styles/theme-1.less'
 // import 'highlight.js/styles/monokai-sublime.css'
 // import '@/assets/markdown/highlightjs/styles/ocean.min.css'
 
 export default {
-  name: 'artcicle',
-  props: {},
+  name: 'Artcicle',
   components: {},
+  props: {},
   data() {
     return {
       code_style: 'monokai',

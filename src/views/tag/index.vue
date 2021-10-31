@@ -1,413 +1,279 @@
 <template>
-  <div class="tag">
-    <div class="tag-wrapper sp-container">
-      <div class="tag-list">
-        <div class="tag-item active">全部 <span class="num">122</span></div>
-        <div class="tag-item">Vue <span class="num">20</span></div>
-        <div class="tag-item">React <span class="num">1</span></div>
-        <div class="tag-item">Node <span class="num">10</span></div>
-        <div class="tag-item">Golang <span class="num">15</span></div>
-        <div class="tag-item">Mongodb <span class="num">58</span></div>
-        <div class="tag-item">MySql <span class="num">93</span></div>
-        <div class="tag-item">Golang <span class="num">15</span></div>
-        <div class="tag-item">Mongodb <span class="num">58</span></div>
-        <div class="tag-item">MySql <span class="num">93</span></div>
-        <div class="tag-item">Golang <span class="num">15</span></div>
-        <div class="tag-item">Mongodb <span class="num">58</span></div>
-        <div class="tag-item">MySql <span class="num">93</span></div>
-        <div class="tag-item">Golang <span class="num">15</span></div>
-        <div class="tag-item">Mongodb <span class="num">58</span></div>
-        <div class="tag-item">MySql <span class="num">93</span></div>
-        <div class="tag-item">Golang <span class="num">15</span></div>
-        <div class="tag-item">Mongodb <span class="num">58</span></div>
-        <div class="tag-item">MySql <span class="num">93</span></div>
-        <div class="tag-item">Golang <span class="num">15</span></div>
-        <div class="tag-item">Mongodb <span class="num">58</span></div>
-        <div class="tag-item">MySql <span class="num">93</span></div>
-        <div class="tag-item">Golang <span class="num">15</span></div>
-        <div class="tag-item">Mongodb <span class="num">58</span></div>
-        <div class="tag-item">MySql <span class="num">93</span></div>
+  <div class="home">
+    <div class="top">
+      <div class="info">
+        <div class="mask">
+          标签
+        </div>
+        <!-- <div class="arrow">
+          <i class="iconfont arrow-down"></i>
+        </div> -->
       </div>
-      <div class="list">
-        <div class="list-item">
-          <div class="left">
-            <div class="title">
-              MyBatis-Plus学习使用（Springboot整合MyBatis-Plus）
-            </div>
-            <div class="abstract">
-              本文将对MyBatis-Plus进行学习，主要是对简单的增删改查、分页查询、自动填充、乐观锁、逻辑删除、性能分析进行学习。MyBatis-Plus（简称
-              MP）是一个 MyBatis 的增强工具，在 MyBatis
-              的基础上只做增强不做改变，为简化开发、提高效率而生......
-            </div>
-            <!-- <div class="right-item">
-          <i class="iconfont leimupinleifenleileibie2"></i>分类
-        </div>tag
-        <div class="right-item"><i class="iconfont biaoqian"></i>标签</div> -->
-            <div class="info">
-              <span class="item"><i class="iconfont riqi"></i>2020-11-03</span>
-              ｜
-              <span class="item"
-                ><i class="iconfont leimupinleifenleileibie2"></i>项目分类</span
-              >
-              ｜
-              <span class="item"
-                ><i class="iconfont biaoqian"></i>项目标签</span
-              >
-            </div>
-          </div>
-          <div class="right">
-            <div class="image-wrapper">
-              <img class="blog-image" src="@/assets/image/blog.jpg" alt="" />
-            </div>
-          </div>
-        </div>
-        <div class="list-item">
-          <div class="left">
-            <div class="title">
-              MyBatis-Plus学习使用（Springboot整合MyBatis-Plus）
-            </div>
-
-            <div class="abstract">
-              本文将对MyBatis-Plus进行学习，主要是对简单的增删改查、分页查询、自动填充、乐观锁、逻辑删除、性能分析进行学习。MyBatis-Plus（简称
-              MP）是一个 MyBatis 的增强工具，在 MyBatis
-              的基础上只做增强不做改变，为简化开发、提高效率而生......
-            </div>
-            <!-- <div class="right-item">
-          <i class="iconfont leimupinleifenleileibie2"></i>分类
-        </div>
-        <div class="right-item"><i class="iconfont biaoqian"></i>标签</div> -->
-            <div class="info">
-              <span class=" item"><i class="iconfont riqi"></i>2020-11-03</span>
-              ｜
-              <span class=" item"
-                ><i class="iconfont leimupinleifenleileibie2"></i>项目分类</span
-              >
-              ｜
-              <span class=" item" style="font-size: 18px;"
-                ><i class="iconfont biaoqian"></i>项目标签</span
-              >
-            </div>
-          </div>
-          <div class="right">
-            <div class="image-wrapper">
-              <img class="blog-image" src="@/assets/image/blog.jpg" alt="" />
-            </div>
-          </div>
-        </div>
-        <div class="list-item">
-          <div class="left">
-            <div class="title">
-              MyBatis-Plus学习使用（Springboot整合MyBatis-Plus）
-            </div>
-
-            <div class="abstract">
-              本文将对MyBatis-Plus进行学习，主要是对简单的增删改查、分页查询、自动填充、乐观锁、逻辑删除、性能分析进行学习。MyBatis-Plus（简称
-              MP）是一个 MyBatis 的增强工具，在 MyBatis
-              的基础上只做增强不做改变，为简化开发、提高效率而生......
-            </div>
-            <!-- <div class="right-item">
-          <i class="iconfont leimupinleifenleileibie2"></i>分类
-        </div>
-        <div class="right-item"><i class="iconfont biaoqian"></i>标签</div> -->
-            <div class="info">
-              <span class="item"><i class="iconfont riqi"></i>2020-11-03</span>
-              ｜
-              <span class="item"
-                ><i class="iconfont leimupinleifenleileibie2"></i>项目分类</span
-              >
-              ｜
-              <span class="item"
-                ><i class="iconfont biaoqian"></i>项目标签</span
-              >
-            </div>
-          </div>
-          <div class="right">
-            <div class="image-wrapper">
-              <img class="blog-image" src="@/assets/image/blog.jpg" alt="" />
-            </div>
-          </div>
-        </div>
-        <div class="list-item">
-          <div class="left">
-            <div class="title">
-              MyBatis-Plus学习使用（Springboot整合MyBatis-Plus）
-            </div>
-
-            <div class="abstract">
-              本文将对MyBatis-Plus进行学习，主要是对简单的增删改查、分页查询、自动填充、乐观锁、逻辑删除、性能分析进行学习。MyBatis-Plus（简称
-              MP）是一个 MyBatis 的增强工具，在 MyBatis
-              的基础上只做增强不做改变，为简化开发、提高效率而生......
-            </div>
-            <!-- <div class="right-item">
-          <i class="iconfont leimupinleifenleileibie2"></i>分类
-        </div>
-        <div class="right-item"><i class="iconfont biaoqian"></i>标签</div> -->
-            <div class="info">
-              <span class="item"><i class="iconfont riqi"></i>2020-11-03</span>
-              ｜
-              <span class="item"
-                ><i class="iconfont leimupinleifenleileibie2"></i>项目分类</span
-              >
-              ｜
-              <span class="item"
-                ><i class="iconfont biaoqian"></i>项目标签</span
-              >
-            </div>
-          </div>
-          <div class="right">
-            <div class="image-wrapper">
-              <img class="blog-image" src="@/assets/image/blog.jpg" alt="" />
-            </div>
-          </div>
-        </div>
-        <div class="list-item">
-          <div class="left">
-            <div class="title">
-              MyBatis-Plus学习使用（Springboot整合MyBatis-Plus）
-            </div>
-
-            <div class="abstract">
-              本文将对MyBatis-Plus进行学习，主要是对简单的增删改查、分页查询、自动填充、乐观锁、逻辑删除、性能分析进行学习。MyBatis-Plus（简称
-              MP）是一个 MyBatis 的增强工具，在 MyBatis
-              的基础上只做增强不做改变，为简化开发、提高效率而生......
-            </div>
-            <!-- <div class="right-item">
-          <i class="iconfont leimupinleifenleileibie2"></i>分类
-        </div>
-        <div class="right-item"><i class="iconfont biaoqian"></i>标签</div> -->
-            <div class="info">
-              <span class="item"><i class="iconfont riqi"></i>2020-11-03</span>
-              ｜
-              <span class="item"
-                ><i class="iconfont leimupinleifenleileibie2"></i>项目分类</span
-              >
-              ｜
-              <span class="item"
-                ><i class="iconfont biaoqian"></i>项目标签</span
-              >
-            </div>
-          </div>
-          <div class="right">
-            <div class="image-wrapper">
-              <img class="blog-image" src="@/assets/image/blog.jpg" alt="" />
-            </div>
-          </div>
-        </div>
-        <div class="list-item">
-          <div class="left">
-            <div class="title">
-              MyBatis-Plus学习使用（Springboot整合MyBatis-Plus）
-            </div>
-
-            <div class="abstract">
-              本文将对M
-            </div>
-            <!-- <div class="right-item">
-          <i class="iconfont leimupinleifenleileibie2"></i>分类
-        </div>
-        <div class="right-item"><i class="iconfont biaoqian"></i>标签</div> -->
-            <div class="info">
-              <span class="item"><i class="iconfont riqi"></i>2020-11-03</span>
-              ｜
-              <span class="item"
-                ><i class="iconfont leimupinleifenleileibie2"></i>项目分类</span
-              >
-              ｜
-              <span class="item"
-                ><i class="iconfont biaoqian"></i>项目标签</span
-              >
-              |
-              <span class="item"><i class="iconfont yanjing"></i>11111</span>
-            </div>
-          </div>
-          <div class="right">
-            <div class="image-wrapper">
-              <img class="blog-image" src="@/assets/image/blog.jpg" alt="" />
-            </div>
-          </div>
-        </div>
-        <div class="paging">
-          <div class="paging-item last">上一页</div>
-          <div class="paging-item center">1/4</div>
-          <div class="paging-item next">下一页</div>
-        </div>
+      <div class="picture">
+        <img
+          class="image"
+          src="@/assets/image/banner1.png"
+          alt=""
+        >
       </div>
-      <div class="siderbar"></div>
+    </div>
+    <div class="bottom">
+      <container>
+        <!--  -->
+      </container>
     </div>
   </div>
 </template>
 
 <script>
 // import Template from './components/Template'
-// import Api from '@/api'
+// import Api from '@/api/index'
+import Vuex from 'vuex'
+
 export default {
-  name: 'Tag', // small&camel
+  name: 'Home',
   components: {},
   data() {
-    return {}
+    return {
+      // articleList: [],
+      // // categoryList: [],
+      // // tagList: [],
+      // search: '',
+      // page: 1,
+      // limit: 8,
+      // articleTotal: 0,
+      // orderBy: 'createdAt'
+    }
   },
-  computed: {},
+  computed: {
+    ...Vuex.mapState([
+      // 映射 this.count 为 store.state.count
+      'articleList',
+      'articleTotal'
+    ]),
+    abstract() {
+      return (item) => {
+        // const txt = content.replaceAll(/ /g, '').replaceAll(/\n/g, '').slice(0, 300)
+        // const txt = content
+        // console.log(content)
+        // console.log(txt)
+        // return Mdjs.md2html(txt)
+        return item.overview
+      }
+    },
+    setStyle() {
+      return (item) => {
+        let size = 13
+        size += Math.ceil(item.articleCount / 3) * 3
+        return `font-size:${size}px;`
+      }
+    }
+  },
   watch: {},
-  created() {},
-  mounted() {},
-  methods: {}
+  created() {
+  },
+  mounted() {
+    // var html = Mdjs.md2html(markdownText)
+  },
+  methods: {
+    ...Vuex.mapActions(['getArticleList'])
+
+    // async getTagList() {
+    //   try {
+    //     // const { search, limit, page, orderBy } = this
+    //     const params = {
+    //       limit: 1000
+    //     }
+    //     const res = await Api.getTagList(params)
+    //     if (res.code === 0) {
+    //       const { list, count } = res.data
+    //       this.tagList = list
+    //       console.log(count)
+    //     } else {
+    //       console.error(res.message)
+    //     }
+    //   } catch (error) {
+    //     console.error(error)
+    //   }
+    // },
+    // async getCategoryList() {
+    //   try {
+    //     // const { search, limit, page, orderBy } = this
+    //     const params = {
+    //       limit: 1000
+    //     }
+    //     const res = await Api.getCategoryList(params)
+    //     if (res.code === 0) {
+    //       const { list, count } = res.data
+    //       this.categoryList = list
+    //       console.log(count)
+    //     } else {
+    //       console.error(res.message)
+    //     }
+    //   } catch (error) {
+    //     console.error(error)
+    //   }
+    // },
+  }
 }
 </script>
 <style lang="scss" scoped>
-.tag {
+.home {
   min-height: calc(100vh - 350px);
-
-  background: linear-gradient(to bottom right, #fff0f5, #bfefff);
-  z-index: 1;
-  // height: 2000px;
-  padding-top: 60px;
-  padding-bottom: 100px;
-  .tag-wrapper {
-    height: 100%;
-    margin: 0 auto;
-    .tag-list {
-      // height: 100px;
-      // background: #ffffff;
+  .top {
+    user-select: none;
+    cursor: pointer;
+    height: 550px;
+    width: 100%;
+    overflow: hidden;
+    .picture {
+      z-index: -1;
+      top: 0;
+      height: 100%;
       width: 100%;
-      display: flex;
-      margin-top: 50px;
-      flex-wrap: wrap;
-      .tag-item {
-        // margin-bottom: 50px;
-        cursor: pointer;
-        background: #ffffff;
-        height: 25px;
+      overflow: hidden;
+      position: fixed;
+      .image {
+        width: 100%;
+      }
+    }
+    .info {
+      color: #ffffff;
+      .mask {
+        width: 100%;
+        height: 550px;
+        position: absolute;
+        // background: rgba(0, 0, 0, 0.05);
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 40px;
+        font-weight: bold;
+        color: #ffffff;
         display: flex;
-        color: #666;
+        justify-content: center;
         align-items: center;
-        padding: 8px 20px;
-        margin: 5px 10px;
-        font-size: 15px;
-        border-radius: 5px;
-        box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.2);
-        // color: #fff;
-        &.active {
-          color: #ffffff;
-          background: #2196f3;
-          .num {
-            color: #2196f3;
-            background: #ffffff;
-            // background: #858585;
-          }
-        }
-        .num {
-          margin-left: 10px;
-          font-size: 13px;
-          border-radius: 5px;
-          background: #eee;
-          padding: 3px 8px;
-          // background: #858585;
-        }
       }
-    }
-    .list {
-      width: 100%;
-      height: 100%;
-      margin-top: 50px;
-      .list-item {
-        height: 210px;
-        width: calc(100% - 40px);
-        // margin: 50px 0;
-        // border-radius: 5px;
-        border-bottom: 1px solid #eee;
-        background: #ffffff;
-        padding: 30px 20px;
-        display: flex;
-        justify-content: space-between;
+      .arrow {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        // background: rgba(0, 0, 0, 0.03);
         cursor: pointer;
-        .left {
-          width: 64%;
-          padding-left: 20px;
-          position: relative;
-          .title {
-            color: #333 !important;
-            text-align: left;
-            font-size: 25px;
-            cursor: pointer;
-            font-family: STSong;
-            font-weight: 900;
-          }
-          .info {
-            // margin-top: 30px;
-            position: absolute;
-            bottom: 10px;
-            display: flex;
-
-            cursor: pointer;
-            color: #858585;
-            font-size: 15px;
-            .item {
-              margin: 0 10px;
-            }
-            .iconfont {
-              margin-right: 8px;
-            }
-          }
-          .abstract {
-            margin-top: 30px;
-            text-align: left;
-            font-family: Tahoma, Helvetica, Arial, '宋体', sans-serif;
-            line-height: 30px;
-            font-size: 16px;
-          }
-        }
-        .right {
-          width: 33%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 100%;
-          .image-wrapper {
-            width: 90%;
-            height: 100%;
-            .blog-image {
-              width: 100%;
-              height: 100%;
-              border-radius: 5px;
-            }
-          }
-        }
-      }
-      .paging {
-        margin-top: 50px;
-        width: calc(100% - 40px);
-        height: 50px;
-        background: #ffffff;
-        padding: 0 20px;
-        border-radius: 0 0 5px 5px;
-        display: flex;
-        justify-content: space-between;
-        .paging-item {
-          height: 100%;
-          display: flex;
-          align-items: center;
-        }
-        .last {
-          margin-left: 100px;
-        }
-        .center {
-          font-family: Helvetica, Arial, '宋体', sans-serif;
-        }
-        .next {
-          margin-right: 100px;
-        }
-        .last,
-        .next {
-          font-size: 15px;
-          cursor: pointer;
+        .arrow-down {
+          font-size: 50px;
         }
       }
     }
-
-    .siderbar {
-      // width: 30%;
-      height: 100%;
+  }
+  .bottom {
+    background: linear-gradient(to bottom right, #fff0f5, #bfefff);
+    z-index: 1;
+    // height: 2000px;
+    padding-top: 30px;
+    padding-bottom: 100px;
+    .list-item {
+      box-shadow: 0 4px 8px 6px rgb(7 17 27 / 6%);
+      // height: 210px;
+      width: calc(100% - 40px);
+      margin-bottom: 20px;
+      border-radius: 5px;
       // border: 1px solid red;
+      background: #ffffff;
+      padding: 30px 20px;
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
+      .left {
+        width: 100%;
+        padding-left: 20px;
+        position: relative;
+        .title {
+          transition: all 0.2s ease-in-out;
+          color: #333 !important;
+          text-align: left;
+          font-size: 22px;
+          cursor: pointer;
+          line-height: 44px;
+          &:hover {
+            color: #49b1f5 !important;
+          }
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
+            'Helvetica Neue', Lato, Roboto, 'PingFang SC', 'Microsoft YaHei',
+            sans-serif;
+          // font-weight: 900;
+        }
+        .info {
+          // margin-top: 30px;
+          // position: absolute;
+          // bottom: 10px;
+          display: flex;
+
+          cursor: pointer;
+          color: #858585;
+          font-size: 13px;
+          text-decoration: none;
+          line-height: 24px;
+          height: 24px;
+          .item {
+            margin: 0 0;
+          }
+          .iconfont {
+            font-size: 12px;
+            margin-right: 2px;
+          }
+          .date {
+          }
+          .category {
+            transition: all 0.2s ease-in-out;
+            .category-item:hover {
+              color: #49b1f5 !important;
+            }
+          }
+          .tag {
+            transition: all 0.2s ease-in-out;
+            .tag-item:hover {
+              color: #49b1f5 !important;
+            }
+          }
+        }
+        .abstract {
+          margin-top: 10px;
+          text-align: left;
+          font-family: Tahoma, Helvetica, Arial, '宋体', sans-serif;
+          line-height: 28px;
+          font-size: 14px;
+        }
+      }
+    }
+    .paging {
+      width: calc(100% - 40px);
+      height: 50px;
+      background: #ffffff;
+      padding: 0 20px;
+      border-radius: 0 0 5px 5px;
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
+      .paging-item {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        color: #858585;
+      }
+      .last {
+        margin-left: 100px;
+      }
+      .center {
+        font-family: Helvetica, Arial, '宋体', sans-serif;
+      }
+      .next {
+        margin-right: 100px;
+      }
+      .last,
+      .next {
+        font-size: 14px;
+        cursor: pointer;
+      }
     }
   }
 }

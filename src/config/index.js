@@ -1,6 +1,6 @@
 export default {
   baseUrl: {
-    dev: 'http://192.168.3.200:2611',
-    pro: 'http://120.79.19.26:2611'
+    dev: 'http://localhost:2610',
+    pro: 'http://120.79.19.26:2610'
   }
 }

@@ -46,22 +46,22 @@
         </div>
         <div class="right-item"><i class="iconfont biaoqian"></i>标签</div> -->
             <div class="info">
-              <span class="item"><i class="iconfont riqi"></i>2020-11-03</span>
+              <span class="item"><i class="iconfont riqi" />2020-11-03</span>
               ｜
-              <span class="item"
-                ><i class="iconfont leimupinleifenleileibie2"></i>项目分类</span
-              >
+              <span class="item"><i class="iconfont leimupinleifenleileibie2" />项目分类</span>
               ｜
-              <span class="item"
-                ><i class="iconfont biaoqian"></i>项目标签</span
-              >
+              <span class="item"><i class="iconfont biaoqian" />项目标签</span>
             </div>
           </div>
-          <div class="right">
+          <!-- <div class="right">
             <div class="image-wrapper">
-              <img class="blog-image" src="@/assets/image/blog.jpg" alt="" />
+              <img
+                class="blog-image"
+                src="@/assets/image/blog.jpg"
+                alt=""
+              >
             </div>
-          </div>
+          </div> -->
         </div>
         <div class="list-item">
           <div class="left">
@@ -79,22 +79,51 @@
         </div>
         <div class="right-item"><i class="iconfont biaoqian"></i>标签</div> -->
             <div class="info">
-              <span class=" item"><i class="iconfont riqi"></i>2020-11-03</span>
+              <span class=" item"><i class="iconfont riqi" />2020-11-03</span>
               ｜
-              <span class=" item"
-                ><i class="iconfont leimupinleifenleileibie2"></i>项目分类</span
-              >
+              <span class=" item"><i class="iconfont leimupinleifenleileibie2" />项目分类</span>
               ｜
-              <span class=" item"
-                ><i class="iconfont biaoqian"></i>项目标签</span
-              >
+              <span class=" item"><i class="iconfont biaoqian" />项目标签</span>
             </div>
           </div>
-          <div class="right">
+          <!-- <div class="right">
             <div class="image-wrapper">
-              <img class="blog-image" src="@/assets/image/blog.jpg" alt="" />
+              <img
+                class="blog-image"
+                src="@/assets/image/blog.jpg"
+                alt=""
+              >
+            </div>
+          </div> -->
+        </div>
+        <div class="list-item">
+          <div class="left">
+            <div class="title">
+              MyBatis-Plus学习使用（Springboot整合MyBatis-Plus）
+            </div>
+
+            <div class="abstract" />
+            <!-- <div class="right-item">
+          <i class="iconfont leimupinleifenleileibie2"></i>分类
+        </div>
+        <div class="right-item"><i class="iconfont biaoqian"></i>标签</div> -->
+            <div class="info">
+              <span class="item"><i class="iconfont riqi" />2020-11-03</span>
+              ｜
+              <span class="item"><i class="iconfont leimupinleifenleileibie2" />项目分类</span>
+              ｜
+              <span class="item"><i class="iconfont biaoqian" />项目标签</span>
             </div>
           </div>
+          <!-- <div class="right">
+            <div class="image-wrapper">
+              <img
+                class="blog-image"
+                src="@/assets/image/blog.jpg"
+                alt=""
+              >
+            </div>
+          </div> -->
         </div>
         <div class="list-item">
           <div class="left">
@@ -103,31 +132,31 @@
             </div>
 
             <div class="abstract">
-              本文将对MyBatis-Plus进行学习，主要是对简单的增删改查、分页查询、自动填充、乐观锁、逻辑删除、性能分析进行学习。MyBatis-Plus（简称
+              <!-- 本文将对MyBatis-Plus进行学习，主要是对简单的增删改查、分页查询、自动填充、乐观锁、逻辑删除、性能分析进行学习。MyBatis-Plus（简称
               MP）是一个 MyBatis 的增强工具，在 MyBatis
-              的基础上只做增强不做改变，为简化开发、提高效率而生......
+              的基础上只做增强不做改变，为简化开发、提高效率而生...... -->
             </div>
             <!-- <div class="right-item">
           <i class="iconfont leimupinleifenleileibie2"></i>分类
         </div>
         <div class="right-item"><i class="iconfont biaoqian"></i>标签</div> -->
             <div class="info">
-              <span class="item"><i class="iconfont riqi"></i>2020-11-03</span>
+              <span class="item"><i class="iconfont riqi" />2020-11-03</span>
               ｜
-              <span class="item"
-                ><i class="iconfont leimupinleifenleileibie2"></i>项目分类</span
-              >
+              <span class="item"><i class="iconfont leimupinleifenleileibie2" />项目分类</span>
               ｜
-              <span class="item"
-                ><i class="iconfont biaoqian"></i>项目标签</span
-              >
+              <span class="item"><i class="iconfont biaoqian" />项目标签</span>
             </div>
           </div>
-          <div class="right">
+          <!-- <div class="right">
             <div class="image-wrapper">
-              <img class="blog-image" src="@/assets/image/blog.jpg" alt="" />
+              <img
+                class="blog-image"
+                src="@/assets/image/blog.jpg"
+                alt=""
+              >
             </div>
-          </div>
+          </div> -->
         </div>
         <div class="list-item">
           <div class="left">
@@ -136,64 +165,31 @@
             </div>
 
             <div class="abstract">
-              本文将对MyBatis-Plus进行学习，主要是对简单的增删改查、分页查询、自动填充、乐观锁、逻辑删除、性能分析进行学习。MyBatis-Plus（简称
+              <!-- 本文将对MyBatis-Plus进行学习，主要是对简单的增删改查、分页查询、自动填充、乐观锁、逻辑删除、性能分析进行学习。MyBatis-Plus（简称
               MP）是一个 MyBatis 的增强工具，在 MyBatis
-              的基础上只做增强不做改变，为简化开发、提高效率而生......
+              的基础上只做增强不做改变，为简化开发、提高效率而生...... -->
             </div>
             <!-- <div class="right-item">
           <i class="iconfont leimupinleifenleileibie2"></i>分类
         </div>
         <div class="right-item"><i class="iconfont biaoqian"></i>标签</div> -->
             <div class="info">
-              <span class="item"><i class="iconfont riqi"></i>2020-11-03</span>
+              <span class="item"><i class="iconfont riqi" />2020-11-03</span>
               ｜
-              <span class="item"
-                ><i class="iconfont leimupinleifenleileibie2"></i>项目分类</span
-              >
+              <span class="item"><i class="iconfont leimupinleifenleileibie2" />项目分类</span>
               ｜
-              <span class="item"
-                ><i class="iconfont biaoqian"></i>项目标签</span
-              >
+              <span class="item"><i class="iconfont biaoqian" />项目标签</span>
             </div>
           </div>
-          <div class="right">
+          <!-- <div class="right">
             <div class="image-wrapper">
-              <img class="blog-image" src="@/assets/image/blog.jpg" alt="" />
-            </div>
-          </div>
-        </div>
-        <div class="list-item">
-          <div class="left">
-            <div class="title">
-              MyBatis-Plus学习使用（Springboot整合MyBatis-Plus）
-            </div>
-
-            <div class="abstract">
-              本文将对MyBatis-Plus进行学习，主要是对简单的增删改查、分页查询、自动填充、乐观锁、逻辑删除、性能分析进行学习。MyBatis-Plus（简称
-              MP）是一个 MyBatis 的增强工具，在 MyBatis
-              的基础上只做增强不做改变，为简化开发、提高效率而生......
-            </div>
-            <!-- <div class="right-item">
-          <i class="iconfont leimupinleifenleileibie2"></i>分类
-        </div>
-        <div class="right-item"><i class="iconfont biaoqian"></i>标签</div> -->
-            <div class="info">
-              <span class="item"><i class="iconfont riqi"></i>2020-11-03</span>
-              ｜
-              <span class="item"
-                ><i class="iconfont leimupinleifenleileibie2"></i>项目分类</span
-              >
-              ｜
-              <span class="item"
-                ><i class="iconfont biaoqian"></i>项目标签</span
+              <img
+                class="blog-image"
+                src="@/assets/image/blog.jpg"
+                alt=""
               >
             </div>
-          </div>
-          <div class="right">
-            <div class="image-wrapper">
-              <img class="blog-image" src="@/assets/image/blog.jpg" alt="" />
-            </div>
-          </div>
+          </div> -->
         </div>
         <div class="list-item">
           <div class="left">
@@ -209,26 +205,24 @@
         </div>
         <div class="right-item"><i class="iconfont biaoqian"></i>标签</div> -->
             <div class="info">
-              <span class="item"><i class="iconfont riqi"></i>2020-11-03</span>
+              <span class="item"><i class="iconfont riqi" />2020-11-03</span>
               ｜
-              <span class="item"
-                ><i class="iconfont leimupinleifenleileibie2"></i>项目分类</span
-              >
+              <span class="item"><i class="iconfont leimupinleifenleileibie2" />项目分类</span>
               ｜
-              <span class="item"
-                ><i class="iconfont biaoqian"></i>项目标签</span
-              >
+              <span class="item"><i class="iconfont biaoqian" />项目标签</span>
               |
-              <span class="tag item"
-                ><i class="iconfont yanjing"></i>11111</span
+              <span class="tag item"><i class="iconfont yanjing" />11111</span>
+            </div>
+          </div>
+          <!-- <div class="right">
+            <div class="image-wrapper">
+              <img
+                class="blog-image"
+                src="@/assets/image/blog.jpg"
+                alt=""
               >
             </div>
-          </div>
-          <div class="right">
-            <div class="image-wrapper">
-              <img class="blog-image" src="@/assets/image/blog.jpg" alt="" />
-            </div>
-          </div>
+          </div> -->
         </div>
         <div class="paging">
           <div class="paging-item last">上一页</div>
@@ -236,7 +230,7 @@
           <div class="paging-item next">下一页</div>
         </div>
       </div>
-      <div class="siderbar"></div>
+      <div class="siderbar" />
     </div>
   </div>
 </template>
@@ -245,7 +239,7 @@
 // import Template from './components/Template'
 // import Api from '@/api'
 export default {
-  name: 'category', // small&camel
+  name: 'Category', // small&camel
   components: {},
   data() {
     return {}
@@ -313,7 +307,7 @@ export default {
       height: 100%;
       margin-top: 50px;
       .list-item {
-        height: 210px;
+        // height: 210px;
         width: calc(100% - 40px);
         // margin: 50px 0;
         // border-radius: 5px;
@@ -324,7 +318,7 @@ export default {
         justify-content: space-between;
         cursor: pointer;
         .left {
-          width: 64%;
+          width: 100%;
           padding-left: 20px;
           position: relative;
           .title {
@@ -336,16 +330,15 @@ export default {
             font-weight: 900;
           }
           .info {
-            // margin-top: 30px;
-            position: absolute;
-            bottom: 10px;
+            margin-top: 30px;
+            // position: absolute;
+            // bottom: 10px;
             display: flex;
-
             cursor: pointer;
             color: #858585;
             font-size: 15px;
             .item {
-              margin: 0 10px;
+              margin: 0 0px;
             }
             .iconfont {
               margin-right: 8px;
