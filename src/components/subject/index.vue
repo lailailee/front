@@ -7,7 +7,10 @@
         :key="index"
         class="archives-list-item"
       >
-        <div class="title">{{ item.title }}</div>
+        <div
+          class="title"
+          @click="skip(item.id)"
+        >{{ item.title }}</div>
         <div class="date item">
           <i class="iconfont riqi" /> {{ item.createdAt }}
         </div>
@@ -21,7 +24,12 @@
 export default {
   name: 'Subject',
   components: {},
-  props: ['title', 'list']
+  props: ['title', 'list'],
+  methods: {
+    skip(aid) {
+      this.$router.push({ name: 'article', params: { aid: aid }})
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>

@@ -9,8 +9,8 @@ export default {
     return axios.get(`${base}/v1/article`, { params })
   },
   // 获取文章详情
-  getArticleDetail: (id, params) => {
-    return axios.get(`${base}/v1/article/${id}`, params)
+  getArticleDetail: (id) => {
+    return axios.get(`${base}/v1/article/${id}`)
   },
   getCategoryList: (params) => {
     return axios.get(`${base}/v1/category`, { params })

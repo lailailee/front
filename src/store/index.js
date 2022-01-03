@@ -70,8 +70,10 @@ const actions = {
       if (res.code === 0) {
         const { list, count } = res.data
         console.log(count)
+        const categoryList = list.sort((a, b) => b.articleCount - a.articleCount)
+        console.log(categoryList)
         commit('UPDATE_STATE', {
-          categoryList: list
+          categoryList
         })
       } else {
         console.error(res.message)

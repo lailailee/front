@@ -8,7 +8,7 @@
     <div class="picture">
       <img
         class="image"
-        :src="require(`../../assets/image/${image}`)"
+        :src="image"
         alt=""
       >
     </div>

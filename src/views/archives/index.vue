@@ -2,7 +2,7 @@
   <div class="archives">
     <banner
       name="归档"
-      image="banner1.png"
+      image="http://lailailee.oss-cn-chengdu.aliyuncs.com/%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/web_resource/images/banner2.png"
     />
     <div class="bottom">
       <container>

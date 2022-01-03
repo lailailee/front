@@ -13,11 +13,11 @@
         </div>
       </div>
       <div class="picture">
-        <img
+        <!-- <img
           class="image"
-          src="@/assets/image/banner2.png"
+          src="http://lailailee.oss-cn-chengdu.aliyuncs.com/%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/web_resource/images/banner2.png"
           alt=""
-        >
+        > -->
       </div>
     </div>
     <div class="bottom">
@@ -28,7 +28,10 @@
           class="list-item"
         >
           <div class="left">
-            <div class="title">
+            <div
+              class="title"
+              @click="skipToArticle(item.id)"
+            >
               {{ item.title }}
             </div>
             <div class="info">
@@ -139,6 +142,9 @@ export default {
     skipToTag(item) {
       const { id, name } = item
       this.$router.push({ name: 'tagList', params: { id, name }})
+    },
+    skipToArticle(aid) {
+      this.$router.push({ name: 'article', params: { aid }})
     }
   }
 }
@@ -180,6 +186,12 @@ export default {
       width: 100%;
       overflow: hidden;
       position: fixed;
+      background-color: #49b1f5;
+      background-attachment: fixed;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-image: url('http://lailailee.oss-cn-chengdu.aliyuncs.com/%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/web_resource/images/home.jpeg');
       .image {
         width: 100%;
       }
@@ -232,11 +244,15 @@ export default {
     // height: 2000px;
     padding-top: 30px;
     padding-bottom: 100px;
+    // .paging {
+    //   margin-bottom: 0px;
+    // }
+
     .list-item {
       box-shadow: 0 4px 8px 6px rgb(7 17 27 / 6%);
       // height: 210px;
       width: calc(100% - 40px);
-      margin-bottom: 20px;
+      margin-top: 20px;
       border-radius: 5px;
       // border: 1px solid red;
       background: #ffffff;
@@ -244,6 +260,12 @@ export default {
       display: flex;
       justify-content: space-between;
       cursor: pointer;
+      // &:nth-last-child {
+      //   margin-bottom: 0px;
+      // }
+      &:nth-child(1) {
+        margin-top: 0px;
+      }
       .left {
         width: 100%;
         padding-left: 20px;
@@ -307,6 +329,7 @@ export default {
       }
     }
     .paging {
+      margin-top: 20px;
       width: calc(100% - 40px);
       height: 50px;
       background: #ffffff;

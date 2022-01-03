@@ -82,25 +82,25 @@ export default {
   mounted() {
     var scrollFunc = (e) => {
       e = e || window.event
-      console.log('======', this.isFixd)
+      // console.log('======', this.isFixd)
       if (this.isFixd) {
         if (e.wheelDelta) { // 第一步：先判断浏览器IE，谷歌滑轮事件
           if (e.wheelDelta > 0) { // 当滑轮向上滚动时
-            console.log('滑轮向上滚动')
+            // console.log('滑轮向上滚动')
             this.isVisible = true
           }
           if (e.wheelDelta < 0) { // 当滑轮向下滚动时
-            console.log('滑轮向下滚动')
+            // console.log('滑轮向下滚动')
             this.isVisible = false
           }
         } else if (e.detail) { // Firefox滑轮事件
           if (e.detail > 0) { // 当滑轮向上滚动时
             this.isVisible = true
-            console.log('滑轮向上滚动')
+            // console.log('滑轮向上滚动')
           }
           if (e.detail < 0) { // 当滑轮向下滚动时
             this.isVisible = false
-            console.log('滑轮向下滚动')
+            // console.log('滑轮向下滚动')
           }
         }
       }
@@ -110,8 +110,8 @@ export default {
 
     window.addEventListener('scroll', (e) => {
       this.scroll = document.documentElement.scrollTop || document.body.scrollTop
-      console.log(this.scroll)
-      console.log(e)
+      // console.log(this.scroll)
+      // console.log(e)
 
       if (this.scroll > 50) {
         this.isFixd = true
@@ -158,6 +158,7 @@ export default {
   opacity: 1;
   filter: none;
   transition: all 0.5s;
+
   &.fixed {
     position: fixed;
     top: -50px;

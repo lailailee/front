@@ -2,10 +2,10 @@
   <div class="archives">
     <banner
       :name="name"
-      image="banner1.png"
+      image="http://lailailee.oss-cn-chengdu.aliyuncs.com/%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/web_resource/images/banner2.png"
     />
     <div class="bottom">
-      <container>
+      <container type="tag">
         <subject
           :title="`标签 : ${name} - ${list.length}`"
           :list="list"
@@ -36,6 +36,7 @@ export default {
     this.getArticleList()
   },
   methods: {
+
     async getArticleList() {
       try {
         const limit = 1000

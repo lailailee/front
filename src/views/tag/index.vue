@@ -2,10 +2,10 @@
   <div class="tag">
     <banner
       name="标签"
-      image="banner1.png"
+      image="http://lailailee.oss-cn-chengdu.aliyuncs.com/%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/web_resource/images/banner2.png"
     />
     <div class="bottom">
-      <container>
+      <container type="tag">
         <div class="subject">
           <div class="subject-head">标签 - {{ tagList.length }}</div>
           <div class="tag-list">

@@ -10,7 +10,7 @@ import '@/plugins/common'
 import '@/plugins/element-ui'
 
 import Tools from './utils/tool'
-
+import '@/v-md-preview'
 // style
 import '@/assets/styles/common.less'
 

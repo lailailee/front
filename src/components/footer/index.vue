@@ -1,5 +1,9 @@
 <template>
-  <div class="footer">©2019-2020 ｜ v1.0 ｜ designed by lailailee</div>
+  <div class="footer">
+    <div>
+      <div>©2021 - 2022 v1.0.1 By Lailailee</div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -13,8 +17,9 @@ export default {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 200px;
-  background: linear-gradient(to top right, #fff0f5, #bfefff);
-  color: #6c7b8b;
+  font-size: 14px;
+  height: 140px;
+  background: #49b1f5;
+  color: #eee;
 }
 </style>

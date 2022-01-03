@@ -3,71 +3,104 @@
     <div class="main">
       <slot />
     </div>
-    <div class="siderbar">
-      <div class="card-widget card-info">
-        <div class="card-info-avatar is-center">
-          <img
-            class="avatar-img"
-            src="../../assets/image/avatar.jpg"
-            onerror="this.onerror=null;this.src='/img/friend_404.gif'"
-            alt="avatar"
-          >
-          <div class="author-info__name">lailailee</div>
-          <div class="author-info__description">roll with it</div>
+    <div
+      id="siderbar"
+      ref="siderbar"
+      class="siderbar"
+    >
+      <!--   -->
+      <div
+        style="height:100%;"
+        :class="type==='article'?'':'sticky-wrapper'"
+      >
+        <div class="card-widget card-info">
+          <div class="card-info-avatar is-center">
+            <img
+              class="avatar-img"
+              src="http://lailailee.oss-cn-chengdu.aliyuncs.com/%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/web_resource/images/avatar1.jpg"
+              onerror="this.onerror=null;this.src='/img/friend_404.gif'"
+              alt="avatar"
+            >
+            <div class="author-info__name">lailailee</div>
+            <div class="author-info__description">roll with it</div>
+          </div>
+          <div class="card-info-data">
+            <div
+              class="card-info-data-item is-center"
+              @click="skipTo('archives')"
+            >
+              <div class="headline">文章</div>
+              <div class="length-num">{{ articleTotal }}</div>
+            </div>
+            <div
+              class="card-info-data-item is-center"
+              @click="skipTo('categories')"
+            >
+              <div class="headline">分类</div>
+              <div class="length-num">{{ categoryList.length }}</div>
+            </div>
+            <div
+              class="card-info-data-item is-center"
+              @click="skipTo('tag')"
+            >
+              <div class="headline">标签</div>
+              <div class="length-num">{{ tagList.length }}</div>
+            </div>
+          </div>
+          <div class="card-info-btn button--animated"><i class="iconfont github" /><span>Follow Me</span></div>
         </div>
-        <div class="card-info-data">
+        <div class="sticky-wrapper">
           <div
-            class="card-info-data-item is-center"
-            @click="skipTo('archives')"
+            ref="catelog"
+            class="catelog-wrapper"
           >
-            <div class="headline">文章</div>
-            <div class="length-num">{{ articleTotal }}</div>
+            <slot name="catelog" />
           </div>
           <div
-            class="card-info-data-item is-center"
-            @click="skipTo('categories')"
+            v-show="type!=='category'"
+            class="card-widget card-categories"
           >
-            <div class="headline">分类</div>
-            <div class="length-num">{{ categoryList.length }}</div>
+            <div class="headline"> <i class="iconfont fenlei" />分类</div>
+            <div class="categories-list">
+              <div
+                v-for="(item,index) in categoryList.slice(0,6)"
+                :key="index"
+                class="categories-item"
+                @click="skipToCategory(item)"
+              >
+                <span class="item-left">{{ item.name }}</span>
+                <span class="item-right">{{ item.articleCount }}</span>
+              </div>
+              <div
+                v-show="categoryList.length>6"
+                class="categories-item"
+                @click="skipToCategories()"
+              >
+                查看更多
+              </div>
+            </div>
           </div>
+
           <div
-            class="card-info-data-item is-center"
-            @click="skipTo('tag')"
+            v-show="type!=='tag'"
+            class="card-widget card-tag"
           >
-            <div class="headline">标签</div>
-            <div class="length-num">{{ tagList.length }}</div>
+            <div class="headline"> <i class="iconfont biaoqian" />标签</div>
+            <div class="tag-list">
+              <span
+                v-for="(item,index) in tagList"
+                :key="index"
+                class="tag-item"
+                :style="setStyle(item)"
+                @click="skipToTag(item)"
+              >
+                {{ item.name }}
+              </span>
+            </div>
           </div>
         </div>
-        <div class="card-info-btn button--animated"><i class="iconfont github" /><span>Follow Me</span></div>
       </div>
-      <div class="card-widget card-categories">
-        <div class="headline"> <i class="iconfont fenlei" />分类</div>
-        <div class="categories-list">
-          <div
-            v-for="(item,index) in categoryList"
-            :key="index"
-            class="categories-item"
-            @click="skipToCategory(item)"
-          >
-            <span class="item-left">{{ item.name }}</span>
-            <span class="item-right">{{ item.articleCount }}</span>
-          </div>
-        </div>
-      </div>
-      <div class="card-widget card-tag">
-        <div class="headline"> <i class="iconfont biaoqian" />标签</div>
-        <div class="tag-list">
-          <span
-            v-for="(item,index) in tagList"
-            :key="index"
-            class="tag-item"
-            :style="setStyle(item)"
-            @click="skipToTag(item)"
-          >
-            {{ item.name }}
-          </span>
-        </div>
-      </div>
+
     </div>
   </div>
 
@@ -79,6 +112,18 @@ import Vuex from 'vuex'
 export default {
   name: 'Container',
   components: {},
+  props: {
+    type: {
+      type: String,
+      // 对象或数组默认值必须从一个工厂函数获取
+      default: ''
+    }
+  },
+  data() {
+    return {
+      isFixed: false
+    }
+  },
   computed: {
     ...Vuex.mapState([
       // 映射 this.count 为 store.state.count
@@ -104,11 +149,27 @@ export default {
   created() {
 
   },
-  mounted() {},
+  mounted() {
+    // var scrollFunc = (e) => {
+    //   e = e || window.event
+    //   console.log('window.clientTop()', window.pageYOffset)
+    //   if (e.scrollTop() > 800) {
+    //     this.isFixed = true
+    //   } else {
+    //     this.isFixed = false
+    //   }
+    // }
+    // document.addEventListener('DOMMouseScroll', scrollFunc, false)
+    // window.onmousewheel = document.onmousewheel = scrollFunc
+  },
   methods: {
     skipTo(type) {
       this.$router.push({ name: type })
     },
+    skipToCategories() {
+      this.$router.push({ name: 'categories' })
+    },
+
     skipToCategory(item) {
       const { id, name } = item
       this.$router.push({ name: 'categoriesList', params: { id, name }})
@@ -122,21 +183,23 @@ export default {
 </script>
 <style lang="scss" scoped>
 .container {
-  height: 100%;
+  // height: 100%;
   margin: 0 auto;
   display: flex;
+  overflow: visible;
+  position: relative !important;
+
   .main {
-    width: 75%;
+    // width: 73%;
+    width: 856px;
     height: 100%;
     margin-top: 20px;
   }
 
   .siderbar {
-    width: 25%;
-    // height: 100%;
-    padding-left: 15px;
-
-    // border: 1px solid red;
+    width: 324px;
+    // width: 25%;
+    padding-left: 2%;
     .card-widget {
       // width: 100%;
       position: relative;
@@ -299,6 +362,26 @@ export default {
           transition: all 0.4s;
           span {
           }
+        }
+      }
+    }
+  }
+  .sticky-wrapper {
+    position: sticky !important;
+    top: 20px;
+    height: auto !important;
+  }
+
+  .catelog-wrapper {
+    .consolelog {
+      font-size: 13px;
+      color: #616365;
+      font-weight: 430;
+      padding-left: 10px;
+      cursor: pointer;
+      .consolelog-item {
+        &:hover {
+          color: #49b1f5 !important;
         }
       }
     }

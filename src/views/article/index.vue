@@ -3,50 +3,85 @@
     <div class="top">
       <div class="info">
         <div class="mask">
-          <div class="title">性能优化 MyBatis-Plu</div>
+          <div class="title">{{ articleDetail.title }}</div>
           <div class="detail">
-            <span class="date item"><i class="iconfont riqi" />2020-11-03</span>
-            ｜
-            <span class="category item"><i class="iconfont leimupinleifenleileibie2" />项目分类</span>
-            ｜
-            <span class="tag item"><i class="iconfont biaoqian" />项目标签</span>
-            |
-            <span class="tag item"><i class="iconfont yanjing" />1111</span>
+            <span class="date item"><i class="iconfont riqi" /> 发表于 {{ articleDetail.createdAt }} </span>
+            <span> ｜ </span>
+            <span class="category item">
+              <i class="iconfont fenlei" />
+              <span
+                class="category-item"
+                @click="skipToCategory( articleDetail.category)"
+              > {{ articleDetail.category.name }}</span>
+            </span>
+            <!-- <span> ｜ </span> -->
+            <span v-if="articleDetail.tags.length > 0"> ｜ </span>
+            <span
+              v-if="articleDetail.tags.length > 0"
+              class="tag item"
+            >
+              <i class="iconfont biaoqian" />
+              <span
+                v-for="(it, ind) in articleDetail.tags"
+                :key="ind"
+              >
+                <span
+                  class="tag-item"
+                  @click="skipToTag(it)"
+                >{{ it.name }}</span>
+                <span v-show="ind<articleDetail.tags.length-1">•</span>
+              </span>
+            </span>
           </div>
         </div>
       </div>
       <div class="picture">
-        <!-- <img
+        <img
           class="image"
-          src="@/assets/image/blog.jpg"
+          src="http://lailailee.oss-cn-chengdu.aliyuncs.com/%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/web_resource/images/banner2.png"
           alt=""
-        > -->
+        >
       </div>
     </div>
     <div class="artcicle-wrapper">
-      <div
-        id="md-wrapper"
-        v-highlight
-        class="md-wrapper"
-        v-html="code"
-      />
+      <container type="article">
+        <div class="editor-wrapper">
+          <v-md-preview
+            ref="preview"
+            :text="articleDetail.content"
+            style="box-shadow:none;border:1px solid #DCDFE6;"
+            height="640px"
+          />
+        </div>
+
+        <template v-slot:catelog>
+          <div class="card-widget card-tag">
+            <div
+              class="headline"
+              @click="consolelog"
+            > <i class="iconfont mulu" />目录</div>
+            <div class="consolelog">
+              <div
+                v-for="(anchor,index) in titles"
+                :key="index"
+                class="consolelog-item"
+                :style="{ padding: `5px 0 5px ${anchor.indent * 10}px` }"
+                @click="handleAnchorClick(anchor)"
+              >
+                <a style="cursor: pointer">{{ anchor.title }}</a>
+              </div>
+            </div>
+          </div>
+        </template>
+      </container>
     </div>
-    <link
-      rel="stylesheet"
-      href="/static/editor.md/css/editormd.min.css"
-    >
-    <!-- <script src="/static/editor.md/editormd.min.js"></script> -->
   </div>
 </template>
 
 <script>
 // /* eslint-disable no-undef */
-import scriptjs from 'scriptjs'
 import test from './test.md'
-// import editormd from 'editor.md'
-// import '@/assets/styles/theme-1.less'
-// import '/static/editor.md/css/editormd.preview.css'
-// import editormd from '/static/editor.md/editormd.min'
+import Api from '@/api/index'
 
 export default {
   name: 'Artcicle',
@@ -54,55 +89,76 @@ export default {
   props: {},
   data() {
     return {
-      code: test
+      code: test,
+      articleDetail: {
+
+      },
+      titles: []
     }
   },
   computed: {},
   watch: {},
-  created() {},
-  async mounted() {
-    console.error('editormd')
+  created() {
+    this.getArticleDetail()
+  },
+  mounted() {
+    setTimeout(() => {
+      console.log(this.$refs.preview)
+      const anchors = this.$refs.preview.$el.querySelectorAll('h1,h2,h3')
+      // ,h4,h5,h6
+      console.log(anchors)
+      const titles = Array.from(anchors).filter((title) => !!title.innerText.trim())
 
-    debugger
-    const editormd = await this.fetchScript('/static/editor.md/editormd.min.js')
-    console.error(editormd)
-    debugger
-    editormd.markdownToHTML('md-wrapper', {
-      markdown: test, // + "\r\n" + $("#append-test").text(),
-      // htmlDecode      : true,       // 开启 HTML 标签解析，为了安全性，默认不开启
-      htmlDecode: 'style,script,iframe', // you can filter tags decode
-      // toc             : false,
-      tocm: true, // Using [TOCM]
-      // tocContainer    : "#custom-toc-container", // 自定义 ToC 容器层
-      // gfm             : false,
-      // tocDropdown     : true,
-      // markdownSourceCode : true, // 是否保留 Markdown 源码，即是否删除保存源码的 Textarea 标签
-      emoji: true,
-      taskList: true,
-      tex: true, // 默认不解析
-      flowChart: true, // 默认不解析
-      sequenceDiagram: true // 默认不解析
-    })
+      if (!titles.length) {
+        this.titles = []
+        return
+      }
+      const hTags = Array.from(new Set(titles.map((title) => title.tagName))).sort()
 
-    // marked.setOptions({
-    //   gfm: true, // 默认为true。 允许 Git Hub标准的markdown.
-    //   tables: true, // 默认为true。 允许支持表格语法。该选项要求 gfm 为true。
-    //   breaks: true, // 默认为false。 允许回车换行。该选项要求 gfm 为true。
-    //   pedantic: true, // 默认为false。 尽可能地兼容 markdown.pl的晦涩部分。不纠正原始模型任何的不良行为和错误。
-    //   sanitize: false, // 对输出进行过滤（清理）
-    //   smartLists: true,
-    //   smartypants: true // 使用更为时髦的标点，比如在引用语法中加入破折号。
-    // })
-    // this.code = marked(this.code)
-    // console.log(this.test)
+      this.titles = titles.map((el) => ({
+        title: el.innerText,
+        lineIndex: el.getAttribute('data-v-md-line'),
+        indent: hTags.indexOf(el.tagName)
+      }))
+    }, 1000)
   },
   methods: {
-    fetchScript: function(url) {
-      return new Promise(resolve => {
-        scriptjs(url, () => {
-          resolve()
+    consolelog() {
+      console.log(this.$refs.preview)
+    },
+    // getArticleDetail
+    async getArticleDetail() {
+      try {
+        const id = this.$route.params.aid
+        const res = await Api.getArticleDetail(id)
+        if (res.code === 0) {
+          this.articleDetail = res.data
+        } else {
+          console.error(res.message)
+        }
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    skipToCategory(item) {
+      const { id, name } = item
+      this.$router.push({ name: 'categoriesList', params: { id, name }})
+    },
+    skipToTag(item) {
+      const { id, name } = item
+      this.$router.push({ name: 'tagList', params: { id, name }})
+    },
+    handleAnchorClick(anchor) {
+      const { preview } = this.$refs
+      const { lineIndex } = anchor
+      const heading = preview.$el.querySelector(`[data-v-md-line="${lineIndex}"]`)
+      if (heading) {
+        preview.scrollToTarget({
+          target: heading,
+          scrollContainer: window,
+          top: 60
         })
-      })
+      }
     }
   }
 }
@@ -112,7 +168,7 @@ export default {
   .top {
     user-select: none;
     cursor: pointer;
-    height: 450px;
+    height: 400px;
     width: 100%;
     overflow: hidden;
     .picture {
@@ -134,7 +190,7 @@ export default {
         height: 550px;
         position: absolute;
         background: rgba(0, 0, 0, 0.6);
-        font-family: STSong, 'Times New Roman', Times, serif;
+        // font-family: STSong, 'Times New Roman', Times, serif;
         display: flex;
         // justify-content: center;
         flex-direction: column;
@@ -142,33 +198,44 @@ export default {
         // flex-wrap: wrap;
         position: relative;
         .title {
-          margin-top: 250px;
+          margin-top: 200px;
           text-align: center;
-          // width: 100%;
           font-size: 40px;
-          font-weight: bold;
           height: 70px;
+          line-height: 70px;
         }
         .detail {
-          // margin-top: 30px;
-          // position: absolute;
           width: 100%;
           display: flex;
           justify-content: center;
           cursor: pointer;
-          color: #ffffff;
           font-size: 15px;
+          display: flex;
+          color: #ffffff;
+          font-size: 13px;
+          text-decoration: none;
+          line-height: 24px;
+          height: 24px;
           .item {
-            margin: 0 10px;
+            margin: 0 0;
           }
           .iconfont {
-            margin-right: 8px;
+            font-size: 12px;
+            margin-right: 2px;
           }
           .date {
           }
           .category {
+            transition: all 0.2s ease-in-out;
+            .category-item:hover {
+              color: #49b1f5 !important;
+            }
           }
           .tag {
+            transition: all 0.2s ease-in-out;
+            .tag-item:hover {
+              color: #49b1f5 !important;
+            }
           }
         }
       }
@@ -183,26 +250,6 @@ export default {
     margin: 0 auto;
     display: flex;
     justify-content: center;
-    .md-wrapper {
-      height: 100%;
-      width: 1000px;
-      background: #fbfbfb;
-      padding: 50px 90px 100px;
-      margin-top: -70px;
-      border-radius: 3px;
-      .markdown-body {
-        // 编写容器的一些css，根据需要进行调整，这里是我博客的，在github提供的.markdown-body基础上修改的box-sizing: border-box;
-        /* max-width: 980px; */
-        /* padding: 45px; */
-      }
-
-      .mavon-editor {
-        // width: 100%;
-        padding: 50px 90px 100px;
-        // box-sizing: content-box;
-        background: #fbfbfb;
-      }
-    }
   }
 }
 </style>
