@@ -1,7 +1,7 @@
 <template>
   <div :class="headerClass">
     <div class="header-wrapper">
-      <div class="header-left ">Lailailee'home</div>
+      <div class="header-left ">Lailailee</div>
       <div class="header-right ">
         <div
           class="right-item"
@@ -11,9 +11,15 @@
         </div>
         <div
           class="right-item"
-          @click="skipTo('category')"
+          @click="skipTo('archives')"
         >
-          <i class="iconfont leimupinleifenleileibie2" />分类
+          <i class="iconfont guidang" />归档
+        </div>
+        <div
+          class="right-item"
+          @click="skipTo('categories')"
+        >
+          <i class="iconfont fenlei" />分类
         </div>
         <div
           class="right-item"
@@ -28,7 +34,7 @@
           <i class="iconfont shijianxian" />时间线
         </div>
      -->
-        <div
+        <!-- <div
           class="right-item"
           @click="developing"
         >
@@ -45,7 +51,7 @@
           @click="developing"
         >
           <i class="iconfont guanyuwomen-copy" />关于我
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -135,7 +141,6 @@ export default {
       })
     }
   }
-
 }
 </script>
 <style lang="scss" scoped>
@@ -186,15 +191,31 @@ export default {
         margin-top: 5px;
         cursor: pointer;
         border-radius: 5px;
-        padding: 8px 15px;
-        margin: 0 0px;
+        margin: 8px 6px;
+        padding-bottom: 4px;
+        // margin: 0 0px;
         font-size: 14px;
-        &:hover {
-          background: rgba(255, 255, 255, 0.08);
-          color: #fff !important;
+        position: relative;
+        &::after {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          z-index: -1;
+          width: 0px;
+          height: 3px;
+          background-color: #80c8f8;
+          content: '';
+          transition: all 0.3s ease-in-out;
         }
+        &:hover:after {
+          width: 100%;
+        }
+        // &:hover {
+        //   background: rgba(255, 255, 255, 0.08);
+        //   color: #fff !important;
+        // }
         .iconfont {
-          margin-right: 10px;
+          margin-right: 5px;
         }
       }
     }

@@ -1,5 +1,55 @@
+/* eslint-disable no-caller */
+/* eslint-disable space-before-function-paren */
 /* eslint-disable camelcase */
 const Tool = {
+  getRandomShallowColor() {
+    // 随机生成RGB颜色
+    const arr = []
+    for (var i = 0; i < 3; i++) {
+      // 暖色
+      arr.push(Math.floor(Math.random() * 128 + 64))
+      // 亮色
+      arr.push(Math.floor(Math.random() * 128 + 128))
+    }
+    const [r, g, b] = arr
+    // rgb颜色
+    // var color=`rgb(${r},${g},${b})`;
+    // 16进制颜色
+    var color = `#${r.toString(16).length > 1 ? r.toString(16) : '0' + r.toString(16)}${g.toString(16).length > 1 ? g.toString(16) : '0' + g.toString(16)}${b.toString(16).length > 1 ? b.toString(16) : '0' + b.toString(16)}`
+    return color
+  },
+  getRandomAllColor() {
+    // 随机生成RGB颜色
+    const arr = []
+    for (var i = 0; i < 3; i++) {
+      arr.push(Math.floor(Math.random() * 256))
+    }
+    const [r, g, b] = arr
+    // rgb颜色
+    // var color=`rgb(${r},${g},${b})`;
+    // 16进制颜色
+    var color = `#${r.toString(16).length > 1 ? r.toString(16) : '0' + r.toString(16)}${g.toString(16).length > 1 ? g.toString(16) : '0' + g.toString(16)}${b.toString(16).length > 1 ? b.toString(16) : '0' + b.toString(16)}`
+    return color
+  },
+
+  // 深色
+  getRandomDeepColor() {
+    // 随机生成RGB颜色
+    const arr = []
+    for (var i = 0; i < 3; i++) {
+      // 暗色
+      arr.push(Math.floor(Math.random() * 128))
+      // 暗黑色
+      arr.push(Math.floor(Math.random() * 64))
+    }
+    const [r, g, b] = arr
+    // rgb颜色
+    // var color=`rgb(${r},${g},${b})`;
+    // 16进制颜色
+    var color = `#${r.toString(16).length > 1 ? r.toString(16) : '0' + r.toString(16)}${g.toString(16).length > 1 ? g.toString(16) : '0' + g.toString(16)}${b.toString(16).length > 1 ? b.toString(16) : '0' + b.toString(16)}`
+    return color
+  },
+
   getTime(val) {
     const year = val.getFullYear()
     let month = val.getMonth() + 1
@@ -24,7 +74,7 @@ const Tool = {
   },
   debounce: (fn, delay) => {
     let timer = null // 借助闭包
-    return function() {
+    return function () {
       if (timer) {
         clearTimeout(timer)
       }
@@ -62,7 +112,7 @@ const Tool = {
     )
     return `${arr[1]}-${arr[2]}-${arr[3]} ${arr[4]}:${arr[5]}:${arr[6]}`
   },
-  getArrType: function(dect) {
+  getArrType: function (dect) {
     if (!dect) return ''
     const that = this
     const res = []
@@ -80,7 +130,7 @@ const Tool = {
 
     var timer
 
-    return function() {
+    return function () {
       var th = this
 
       var args = arguments
@@ -89,7 +139,7 @@ const Tool = {
         clearTimeout(timer)
       }
 
-      timer = setTimeout(function() {
+      timer = setTimeout(function () {
         timer = null
 
         fn.apply(th, args)
@@ -104,7 +154,7 @@ const Tool = {
    */
   date(format, timestamp) {
     var jsdate = timestamp ? new Date(timestamp * 1000) : new Date()
-    var pad = function(n, c) {
+    var pad = function (n, c) {
       if ((n = n + '').length < c) {
         return new Array(++c - n.length).join('0') + n
       } else {
@@ -145,33 +195,33 @@ const Tool = {
       'December'
     ]
     var f = {
-      d: function() {
+      d: function () {
         return pad(f.j(), 2)
       },
-      D: function() {
+      D: function () {
         return f.l().substr(0, 3)
       },
-      j: function() {
+      j: function () {
         return jsdate.getDate()
       },
-      l: function() {
+      l: function () {
         return txt_weekdays[f.w()]
       },
-      N: function() {
+      N: function () {
         return f.w() + 1
       },
-      S: function() {
+      S: function () {
         return txt_ordin[f.j()] ? txt_ordin[f.j()] : 'th'
       },
-      w: function() {
+      w: function () {
         return jsdate.getDay()
       },
-      z: function() {
+      z: function () {
         return ((jsdate - new Date(jsdate.getFullYear() + '/1/1')) / 864e5) >> 0
       },
 
       // Week
-      W: function() {
+      W: function () {
         var a = f.z()
         var b = 364 + f.L() - a
         var nd2
@@ -189,19 +239,19 @@ const Tool = {
       },
 
       // Month
-      F: function() {
+      F: function () {
         return txt_months[f.n()]
       },
-      m: function() {
+      m: function () {
         return pad(f.n(), 2)
       },
-      M: function() {
+      M: function () {
         return f.F().substr(0, 3)
       },
-      n: function() {
+      n: function () {
         return jsdate.getMonth() + 1
       },
-      t: function() {
+      t: function () {
         var n
         if ((n = jsdate.getMonth() + 1) === 2) {
           return 28 + f.L()
@@ -215,26 +265,26 @@ const Tool = {
       },
 
       // Year
-      L: function() {
+      L: function () {
         var y = f.Y()
         return !(y & 3) && (y % 1e2 || !(y % 4e2)) ? 1 : 0
       },
       // o not supported yet
-      Y: function() {
+      Y: function () {
         return jsdate.getFullYear()
       },
-      y: function() {
+      y: function () {
         return (jsdate.getFullYear() + '').slice(2)
       },
 
       // Time
-      a: function() {
+      a: function () {
         return jsdate.getHours() > 11 ? 'pm' : 'am'
       },
-      A: function() {
+      A: function () {
         return f.a().toUpperCase()
       },
-      B: function() {
+      B: function () {
         // peter paul koch:
         var off = (jsdate.getTimezoneOffset() + 60) * 60
         var theSeconds =
@@ -249,22 +299,22 @@ const Tool = {
         if (String(beat).length === 2) beat = '0' + beat
         return beat
       },
-      g: function() {
+      g: function () {
         return jsdate.getHours() % 12 || 12
       },
-      G: function() {
+      G: function () {
         return jsdate.getHours()
       },
-      h: function() {
+      h: function () {
         return pad(f.g(), 2)
       },
-      H: function() {
+      H: function () {
         return pad(jsdate.getHours(), 2)
       },
-      i: function() {
+      i: function () {
         return pad(jsdate.getMinutes(), 2)
       },
-      s: function() {
+      s: function () {
         return pad(jsdate.getSeconds(), 2)
       },
       // u not supported yet
@@ -272,13 +322,13 @@ const Tool = {
       // Timezone
       // e not supported yet
       // I not supported yet
-      O: function() {
+      O: function () {
         var t = pad(Math.abs((jsdate.getTimezoneOffset() / 60) * 100), 4)
         if (jsdate.getTimezoneOffset() > 0) t = '-' + t
         else t = '+' + t
         return t
       },
-      P: function() {
+      P: function () {
         var O = f.O()
         return O.substr(0, 3) + ':' + O.substr(3, 2)
       },
@@ -286,7 +336,7 @@ const Tool = {
       // Z not supported yet
 
       // Full Date/Time
-      c: function() {
+      c: function () {
         return (
           f.Y() +
           '-' +
@@ -303,12 +353,12 @@ const Tool = {
         )
       },
       // r not supported yet
-      U: function() {
+      U: function () {
         return Math.round(jsdate.getTime() / 1000)
       }
     }
     let ret
-    return format.replace(new RegExp('[]?([a-zA-Z])', 'g'), function(t, s) {
+    return format.replace(new RegExp('[]?([a-zA-Z])', 'g'), function (t, s) {
       if (t !== s) {
         // escaped
         ret = s

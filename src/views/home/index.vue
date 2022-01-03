@@ -36,7 +36,10 @@
               <span> ｜ </span>
               <span class="category item">
                 <i class="iconfont fenlei" />
-                <span class="category-item"> {{
+                <span
+                  class="category-item"
+                  @click="skipToCategory( item.category)"
+                > {{
                   item.category.name
                 }}</span></span>
               <span v-if="item.tags.length > 0"> ｜ </span>
@@ -49,7 +52,10 @@
                   v-for="(it, ind) in item.tags"
                   :key="ind"
                 >
-                  <span class="tag-item">{{ it.name }}</span>
+                  <span
+                    class="tag-item"
+                    @click="skipToTag(it)"
+                  >{{ it.name }}</span>
                   <span v-show="ind<item.tags.length-1">•</span>
                 </span>
               </span>
@@ -93,29 +99,15 @@ export default {
   components: {},
   data() {
     return {
-      // articleList: [],
-      // // categoryList: [],
-      // // tagList: [],
-      // search: '',
-      // page: 1,
-      // limit: 8,
-      // articleTotal: 0,
-      // orderBy: 'createdAt'
     }
   },
   computed: {
     ...Vuex.mapState([
-      // 映射 this.count 为 store.state.count
       'articleList',
       'articleTotal'
     ]),
     abstract() {
       return (item) => {
-        // const txt = content.replaceAll(/ /g, '').replaceAll(/\n/g, '').slice(0, 300)
-        // const txt = content
-        // console.log(content)
-        // console.log(txt)
-        // return Mdjs.md2html(txt)
         return item.overview
       }
     },
@@ -139,43 +131,15 @@ export default {
       document.getElementsByClassName('bottom')[0].scrollIntoView({
         behavior: 'smooth'
       })
+    },
+    skipToCategory(item) {
+      const { id, name } = item
+      this.$router.push({ name: 'categoriesList', params: { id, name }})
+    },
+    skipToTag(item) {
+      const { id, name } = item
+      this.$router.push({ name: 'tagList', params: { id, name }})
     }
-    // async getTagList() {
-    //   try {
-    //     // const { search, limit, page, orderBy } = this
-    //     const params = {
-    //       limit: 1000
-    //     }
-    //     const res = await Api.getTagList(params)
-    //     if (res.code === 0) {
-    //       const { list, count } = res.data
-    //       this.tagList = list
-    //       console.log(count)
-    //     } else {
-    //       console.error(res.message)
-    //     }
-    //   } catch (error) {
-    //     console.error(error)
-    //   }
-    // },
-    // async getCategoryList() {
-    //   try {
-    //     // const { search, limit, page, orderBy } = this
-    //     const params = {
-    //       limit: 1000
-    //     }
-    //     const res = await Api.getCategoryList(params)
-    //     if (res.code === 0) {
-    //       const { list, count } = res.data
-    //       this.categoryList = list
-    //       console.log(count)
-    //     } else {
-    //       console.error(res.message)
-    //     }
-    //   } catch (error) {
-    //     console.error(error)
-    //   }
-    // },
   }
 }
 </script>

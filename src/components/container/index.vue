@@ -2,7 +2,6 @@
   <div class="container sp-container">
     <div class="main">
       <slot />
-
     </div>
     <div class="siderbar">
       <div class="card-widget card-info">
@@ -17,16 +16,24 @@
           <div class="author-info__description">roll with it</div>
         </div>
         <div class="card-info-data">
-          <div class="card-info-data-item is-center">
+          <div
+            class="card-info-data-item is-center"
+            @click="skipTo('archives')"
+          >
             <div class="headline">文章</div>
             <div class="length-num">{{ articleTotal }}</div>
           </div>
-
-          <div class="card-info-data-item is-center">
+          <div
+            class="card-info-data-item is-center"
+            @click="skipTo('categories')"
+          >
             <div class="headline">分类</div>
             <div class="length-num">{{ categoryList.length }}</div>
           </div>
-          <div class="card-info-data-item is-center">
+          <div
+            class="card-info-data-item is-center"
+            @click="skipTo('tag')"
+          >
             <div class="headline">标签</div>
             <div class="length-num">{{ tagList.length }}</div>
           </div>
@@ -40,6 +47,7 @@
             v-for="(item,index) in categoryList"
             :key="index"
             class="categories-item"
+            @click="skipToCategory(item)"
           >
             <span class="item-left">{{ item.name }}</span>
             <span class="item-right">{{ item.articleCount }}</span>
@@ -54,6 +62,7 @@
             :key="index"
             class="tag-item"
             :style="setStyle(item)"
+            @click="skipToTag(item)"
           >
             {{ item.name }}
           </span>
@@ -70,11 +79,6 @@ import Vuex from 'vuex'
 export default {
   name: 'Container',
   components: {},
-  data() {
-    return {
-
-    }
-  },
   computed: {
     ...Vuex.mapState([
       // 映射 this.count 为 store.state.count
@@ -102,6 +106,17 @@ export default {
   },
   mounted() {},
   methods: {
+    skipTo(type) {
+      this.$router.push({ name: type })
+    },
+    skipToCategory(item) {
+      const { id, name } = item
+      this.$router.push({ name: 'categoriesList', params: { id, name }})
+    },
+    skipToTag(item) {
+      const { id, name } = item
+      this.$router.push({ name: 'tagList', params: { id, name }})
+    }
   }
 }
 </script>
@@ -171,6 +186,7 @@ export default {
         justify-content: space-between;
         width: 100%;
         .card-info-data-item {
+          cursor: pointer;
           width: 33%;
           .headline {
             // margin-bottom: 8px;

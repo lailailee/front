@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <base-header />
-    <router-view />
+    <router-view :key="activeDate" />
     <base-footer />
   </div>
 </template>
@@ -11,13 +11,21 @@ import Vuex from 'vuex'
 
 export default {
   name: 'App',
+  data() {
+    return { activeDate: null }
+  },
   computed: {
     ...Vuex.mapState([
-      // 映射 this.count 为 store.state.count
-      // 'count'
     ])
   },
-
+  watch: {
+    $route: {
+      handler() {
+        this.activeDate = new Date().getTime()
+      },
+      immediate: true
+    }
+  },
   created() {
     this.getArticleList()
     this.getCategoryList()
