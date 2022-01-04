@@ -28,19 +28,26 @@
           class="list-item"
         >
           <div class="left">
-            <div
-              class="title"
-              @click="skipToArticle(item.id)"
-            >
-              {{ item.title }}
+            <div class="title-wrapper">
+              <span
+                class="title"
+                @click="skipToArticle(item.id)"
+              >{{ item.title }} </span><span
+                v-if="item.series.id!==0"
+                class="series-name-wrapper "
+              >[ <span
+                  class="series-name"
+                  @click="skipToSeries(item.series)"
+                >{{ seriesName(item) }}</span> ]</span>
+              <!-- 系列： -->
             </div>
             <div class="info">
-              <span class="date item"><i class="iconfont riqi" /> 发表于 {{ item.createdAt.split(" ")[0] }}</span>
+              <span class="date item"><i class="iconfont calculator" /> 发表于 {{ item.createdAt.split(" ")[0] }}</span>
               <span> ｜ </span>
-              <span class="category item">
-                <i class="iconfont fenlei" />
+              <span class="tag item">
+                <i class="iconfont viewlist" />
                 <span
-                  class="category-item"
+                  class="tag-item"
                   @click="skipToCategory( item.category)"
                 > {{
                   item.category.name
@@ -50,7 +57,10 @@
                 v-if="item.tags.length > 0"
                 class="tag item"
               >
-                <i class="iconfont biaoqian" />
+                <i
+                  class="iconfont discount"
+                  style="margin-right:3px;"
+                />
                 <span
                   v-for="(it, ind) in item.tags"
                   :key="ind"
@@ -62,10 +72,10 @@
                   <span v-show="ind<item.tags.length-1">•</span>
                 </span>
               </span>
-              <!-- ｜ -->
-              <!-- <span class="tag item">
-                  <i class="iconfont yanjing" />{{ item.viewCount }}
-                </span> -->
+              <!-- ｜
+              <span class="tag item">
+                <i class="iconfont yanjing" />{{ item.viewCount }}
+              </span> -->
               <!-- ｜
                 <span class="tag item">
                   <i class="iconfont yanjing" />{{ item.viewCount }}
@@ -94,7 +104,6 @@
 </template>
 
 <script>
-// import Template from './components/Template'
 import Vuex from 'vuex'
 
 export default {
@@ -109,6 +118,15 @@ export default {
       'articleList',
       'articleTotal'
     ]),
+    seriesName() {
+      return (article) => {
+        if (article.seriesId === 0) {
+          return ''
+        } else {
+          return article.series.name
+        }
+      }
+    },
     abstract() {
       return (item) => {
         return item.overview
@@ -145,6 +163,10 @@ export default {
     },
     skipToArticle(aid) {
       this.$router.push({ name: 'article', params: { aid }})
+    },
+    skipToSeries(item) {
+      const { id, name } = item
+      this.$router.push({ name: 'seriesList', params: { id, name }})
     }
   }
 }
@@ -238,6 +260,7 @@ export default {
       }
     }
   }
+
   .bottom {
     background: linear-gradient(to bottom right, #fff0f5, #bfefff);
     z-index: 1;
@@ -270,27 +293,37 @@ export default {
         width: 100%;
         padding-left: 20px;
         position: relative;
-        .title {
-          transition: all 0.2s ease-in-out;
-          color: #333 !important;
-          text-align: left;
-          font-size: 22px;
-          cursor: pointer;
-          line-height: 44px;
-          &:hover {
-            color: #49b1f5 !important;
+        .title-wrapper {
+          .title {
+            transition: all 0.2s ease-in-out;
+            color: #333 !important;
+            text-align: left;
+            font-size: 22px;
+            cursor: pointer;
+            line-height: 44px;
+
+            &:hover {
+              color: #49b1f5 !important;
+            }
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
+              'Helvetica Neue', Lato, Roboto, 'PingFang SC', 'Microsoft YaHei',
+              sans-serif;
+            // font-weight: 900;
           }
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
-            'Helvetica Neue', Lato, Roboto, 'PingFang SC', 'Microsoft YaHei',
-            sans-serif;
-          // font-weight: 900;
+          .series-name-wrapper {
+            font-weight: 400;
+            font-size: 13px;
+            .series-name {
+              transition: all 0.3s;
+              cursor: pointer;
+              &:hover {
+                color: #49b1f5 !important;
+              }
+            }
+          }
         }
         .info {
-          // margin-top: 30px;
-          // position: absolute;
-          // bottom: 10px;
           display: flex;
-
           cursor: pointer;
           color: #858585;
           font-size: 13px;
@@ -301,21 +334,26 @@ export default {
             margin: 0 0;
           }
           .iconfont {
-            font-size: 12px;
-            margin-right: 2px;
+            font-size: 15px;
+            margin-right: 0px;
           }
           .date {
           }
           .category {
-            transition: all 0.2s ease-in-out;
-            .category-item:hover {
-              color: #49b1f5 !important;
+            transition: all 0.3s;
+            .category-item {
+              transition: all 0.3s;
+              &:hover {
+                color: #49b1f5 !important;
+              }
             }
           }
           .tag {
-            transition: all 0.2s ease-in-out;
-            .tag-item:hover {
-              color: #49b1f5 !important;
+            .tag-item {
+              transition: all 0.3s;
+              &:hover {
+                color: #49b1f5 !important;
+              }
             }
           }
         }

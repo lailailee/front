@@ -30,7 +30,7 @@ const getElememtY = elem => {
 /**
  * 滚动到指定的元素
  * @param {String} elem DOM元素
- * @param {Number} duration 滚动动画执行的时间
+ * @param {Number} duration 滚动动画执行的history1
  * @param {Number} offset 滚动偏移量
  */
 const scrollToElem = (elem, duration, offset) => {
@@ -46,7 +46,7 @@ const scrollToElem = (elem, duration, offset) => {
   let start
   window.requestAnimationFrame(function step(timestamp) {
     if (!start) start = timestamp
-    // 计算时间的差值，根据差值计算偏移量
+    // 计算history1的差值，根据差值计算偏移量
     const time = timestamp - start
     let percent = Math.min(time / duration, 1)
     percent = easing(percent)

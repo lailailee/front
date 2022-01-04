@@ -7,9 +7,9 @@
           <div class="detail">
             <span class="date item"><i class="iconfont riqi" />2020-11-03</span>
             ｜
-            <span class="category item"><i class="iconfont leimupinleifenleileibie2" />项目分类</span>
+            <span class="category item"><i class="iconfont leimupinleiguidangleibie2" />项目分类</span>
             ｜
-            <span class="tag item"><i class="iconfont biaoqian" />项目标签</span>
+            <span class="tag item"><i class="iconfont discount" />项目标签</span>
             |
             <span class="tag item"><i class="iconfont yanjing" />1111</span>
           </div>

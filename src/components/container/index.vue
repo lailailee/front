@@ -41,13 +41,23 @@
             </div>
             <div
               class="card-info-data-item is-center"
+              @click="skipTo('series')"
+            >
+              <div class="headline">系列</div>
+              <div class="length-num">{{ seriesList.length }}</div>
+            </div>
+            <div
+              class="card-info-data-item is-center"
               @click="skipTo('tag')"
             >
               <div class="headline">标签</div>
               <div class="length-num">{{ tagList.length }}</div>
             </div>
           </div>
-          <div class="card-info-btn button--animated"><i class="iconfont github" /><span>Follow Me</span></div>
+          <div
+            class="card-info-btn button--animated"
+            @click="skipToGithub"
+          ><i class="iconfont github" /><span>Follow Me</span></div>
         </div>
         <div class="sticky-wrapper">
           <div
@@ -57,22 +67,44 @@
             <slot name="catelog" />
           </div>
           <div
+            v-show="type!=='series'"
+            class="card-widget card-categories"
+          >
+            <div class="headline"> <i class="iconfont jihe" />系列</div>
+            <div class="categories-list">
+              <div
+                v-for="(item,index) in seriesList.slice(0,6)"
+                :key="index"
+                :class="'categories-item '+className(item,'series')"
+                @click="skipToSeries(item)"
+              >
+                <span class="item-left">{{ item.name }}</span><span>（{{ item.articleCount }}）</span>
+              </div>
+              <div
+                v-show="seriesList.length>6"
+                class="categories-item"
+                @click="skipTo('series')"
+              >
+                查看更多
+              </div>
+            </div>
+          </div>
+          <div
             v-show="type!=='category'"
             class="card-widget card-categories"
           >
-            <div class="headline"> <i class="iconfont fenlei" />分类</div>
+            <div class="headline"> <i class="iconfont viewlist" />分类</div>
             <div class="categories-list">
               <div
-                v-for="(item,index) in categoryList.slice(0,6)"
+                v-for="(item,index) in categoryList.slice(0,10)"
                 :key="index"
-                class="categories-item"
+                :class="'categories-item '+className(item,'category')"
                 @click="skipToCategory(item)"
               >
-                <span class="item-left">{{ item.name }}</span>
-                <span class="item-right">{{ item.articleCount }}</span>
+                <span class="item-left">{{ item.name }}</span><span>（{{ item.articleCount }}）</span>
               </div>
               <div
-                v-show="categoryList.length>6"
+                v-show="categoryList.length>10"
                 class="categories-item"
                 @click="skipToCategories()"
               >
@@ -85,12 +117,12 @@
             v-show="type!=='tag'"
             class="card-widget card-tag"
           >
-            <div class="headline"> <i class="iconfont biaoqian" />标签</div>
+            <div class="headline"> <i class="iconfont discount" />标签</div>
             <div class="tag-list">
               <span
                 v-for="(item,index) in tagList"
                 :key="index"
-                class="tag-item"
+                :class="'tag-item '+tagClassName(item)"
                 :style="setStyle(item)"
                 @click="skipToTag(item)"
               >
@@ -117,6 +149,21 @@ export default {
       type: String,
       // 对象或数组默认值必须从一个工厂函数获取
       default: ''
+    },
+    article: {
+      type: Object,
+      default: () => {
+        return {
+          category: {
+            name: ''
+          },
+          tags: [],
+          series: {
+            name: '',
+            articles: []
+          }
+        }
+      }
     }
   },
   data() {
@@ -130,8 +177,34 @@ export default {
       'articleList',
       'categoryList',
       'tagList',
+      'seriesList',
       'articleTotal'
     ]),
+    className() {
+      return (item, type) => {
+        if (this.type === 'article') {
+          if (this.article[type].id === item.id) {
+            return 'item-active'
+          }
+          return ''
+        }
+        return ''
+      }
+    },
+    tagClassName() {
+      return (item) => {
+        let res = false
+        this.article.tags.forEach(e => {
+          if (!res && e.id === item.id) {
+            res = true
+          }
+        })
+        if (res) {
+          return 'item-active2'
+        }
+        return ''
+      }
+    },
     abstract() {
       return (item) => {
         return item.overview
@@ -144,6 +217,7 @@ export default {
         return `font-size:${size}px;`
       }
     }
+
   },
   watch: {},
   created() {
@@ -163,13 +237,19 @@ export default {
     // window.onmousewheel = document.onmousewheel = scrollFunc
   },
   methods: {
+    skipToGithub() {
+      window.open('https://github.com/lailailee')
+    },
     skipTo(type) {
       this.$router.push({ name: type })
     },
     skipToCategories() {
       this.$router.push({ name: 'categories' })
     },
-
+    skipToSeries(item) {
+      const { id, name } = item
+      this.$router.push({ name: 'seriesList', params: { id, name }})
+    },
     skipToCategory(item) {
       const { id, name } = item
       this.$router.push({ name: 'categoriesList', params: { id, name }})
@@ -306,6 +386,8 @@ export default {
     }
     .card-tag {
       .tag-item {
+        transition: all 0.3s;
+
         color: #999;
         margin-right: 5px;
         cursor: pointer;
@@ -328,19 +410,40 @@ export default {
       }
       .categories-list {
         width: 100%;
+
+        font-size: 13px;
+        color: #616365;
+        font-weight: 430;
+        padding-left: 10px;
+        cursor: pointer;
+        .categories-item {
+          padding: 5px 0 5px 0px;
+          transition: all 0.3s;
+          .item-left {
+            transition: all 0.3s;
+          }
+          &.active {
+            color: #8dcbf5 !important;
+          }
+          &:hover {
+            .item-left {
+              color: #49b1f5 !important;
+            }
+          }
+        }
         // padding: 3px 10px;
         .categories-item {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          // padding: 3px 10px;
-          width: calc(100% - 30px);
-          cursor: pointer;
-          font-size: 14px;
-          padding: 5px 10px;
+          // display: flex;
+          // justify-content: space-between;
+          // align-items: center;
+          // // padding: 3px 10px;
+          // width: calc(100% - 30px);
+          // cursor: pointer;
+          // font-size: 14px;
           // padding: 5px 10px;
-          // display: inline-block;
-          line-height: 28px;
+          // // padding: 5px 10px;
+          // // display: inline-block;
+          // line-height: 28px;
           .item-wrapper {
             // width: 100%;
             // .item-left {
@@ -356,10 +459,10 @@ export default {
           // transition: all 0.2s ease-in-out;
           &:hover {
             // padding: 5px 20px;
-            background-color: #49b1f5;
-            color: #ffffff;
+            // background-color: #49b1f5;
+            // color: #ffffff;
           }
-          transition: all 0.4s;
+          // transition: all 0.4s;
           span {
           }
         }
@@ -380,11 +483,42 @@ export default {
       padding-left: 10px;
       cursor: pointer;
       .consolelog-item {
+        transition: all 0.3s;
+
         &:hover {
           color: #49b1f5 !important;
         }
       }
     }
+    .series {
+      font-size: 13px;
+      color: #616365;
+      font-weight: 430;
+      padding-left: 10px;
+      cursor: pointer;
+      .series-item {
+        padding: 5px 0 5px 0px;
+        transition: all 0.3s;
+        .item-left {
+          transition: all 0.3s;
+        }
+        &.active {
+          color: #8dcbf5 !important;
+        }
+        &:hover {
+          color: #49b1f5 !important;
+        }
+      }
+    }
+  }
+  .item-active {
+    .item-left {
+      // color: #49b1f5 !important;
+      color: #8dcbf5 !important;
+    }
+  }
+  .item-active2 {
+    color: #8dcbf5 !important;
   }
 }
 </style>

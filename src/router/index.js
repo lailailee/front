@@ -8,6 +8,10 @@ const Category = () =>
   import(/* webpackChunkName: "category" */ '../views/category')
 const CategoryList = () =>
   import(/* webpackChunkName: "category_list" */ '../views/category/list')
+const Series = () =>
+  import(/* webpackChunkName: "series" */ '../views/series')
+const SeriesList = () =>
+  import(/* webpackChunkName: "series_list" */ '../views/series/list')
 const TimeLine = () =>
   import(/* webpackChunkName: "timeLine" */ '../views/timeLine')
 const About = () => import(/* webpackChunkName: "about" */ '../views/about')
@@ -39,6 +43,16 @@ const routes = [
     path: '/categories/:name/:id',
     name: 'categoriesList',
     component: CategoryList
+  },
+  {
+    path: '/series',
+    name: 'series',
+    component: Series
+  },
+  {
+    path: '/series/:name/:id',
+    name: 'seriesList',
+    component: SeriesList
   },
   {
     path: '/tag',

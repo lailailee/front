@@ -17,5 +17,8 @@ export default {
   },
   getTagList: (params) => {
     return axios.get(`${base}/v1/tag`, { params })
+  },
+  getSeriesList: (params) => {
+    return axios.get(`${base}/v1/series`, { params })
   }
 }

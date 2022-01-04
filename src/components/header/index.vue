@@ -1,37 +1,46 @@
 <template>
   <div :class="headerClass">
     <div class="header-wrapper">
-      <div class="header-left ">Lailailee</div>
+      <div
+        class="header-left "
+        @click="skipTo('home')"
+      >Lailailee</div>
       <div class="header-right ">
         <div
           class="right-item"
           @click="skipTo('home')"
         >
-          <i class="iconfont home-copy" />首页
+          <i class="iconfont home" />首页
         </div>
         <div
           class="right-item"
           @click="skipTo('archives')"
         >
-          <i class="iconfont guidang" />归档
+          <i class="iconfont auto" />归档
         </div>
         <div
           class="right-item"
           @click="skipTo('categories')"
         >
-          <i class="iconfont fenlei" />分类
+          <i class="iconfont viewlist" />分类
+        </div>
+        <div
+          class="right-item"
+          @click="skipTo('series')"
+        >
+          <i class="iconfont integral" />系列
         </div>
         <div
           class="right-item"
           @click="skipTo('tag')"
         >
-          <i class="iconfont biaoqian" />标签
+          <i class="iconfont discount" />标签
         </div>
         <!-- <div
           class="right-item"
           @click="skipTo('timeline')"
         >
-          <i class="iconfont shijianxian" />时间线
+          <i class="iconfont shijianxian" />history1线
         </div>
      -->
         <!-- <div

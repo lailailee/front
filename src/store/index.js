@@ -8,6 +8,7 @@ const state = {
   articleList: [],
   categoryList: [],
   tagList: [],
+  seriesList: [],
   search: '',
   page: 1,
   limit: 8,
@@ -70,8 +71,14 @@ const actions = {
       if (res.code === 0) {
         const { list, count } = res.data
         console.log(count)
-        const categoryList = list.sort((a, b) => b.articleCount - a.articleCount)
-        console.log(categoryList)
+        const categoryList0 = list.sort((a, b) => b.articleCount - a.articleCount)
+        console.log(categoryList0)
+        const categoryList = []
+        categoryList0.forEach(e => {
+          if (e.articleCount > 0) {
+            categoryList.push(e)
+          }
+        })
         commit('UPDATE_STATE', {
           categoryList
         })
@@ -91,8 +98,39 @@ const actions = {
       if (res.code === 0) {
         const { list, count } = res.data
         console.log(count)
+        const tagList = []
+        list.forEach(e => {
+          if (e.articleCount > 0) {
+            tagList.push(e)
+          }
+        })
         commit('UPDATE_STATE', {
-          tagList: list
+          tagList
+        })
+      } else {
+        console.error(res.message)
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  },
+  async getSeriesList({ commit }) {
+    try {
+      const params = {
+        limit: 1000
+      }
+      const res = await Api.getSeriesList(params)
+      if (res.code === 0) {
+        const { list, count } = res.data
+        console.log(count)
+        const seriesList = []
+        list.forEach(e => {
+          if (e.articleCount > 0) {
+            seriesList.push(e)
+          }
+        })
+        commit('UPDATE_STATE', {
+          seriesList
         })
       } else {
         console.error(res.message)

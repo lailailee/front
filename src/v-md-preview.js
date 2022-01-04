@@ -44,8 +44,8 @@ import '@kangc/v-md-editor/lib/plugins/copy-code/copy-code.css'
 
 import createAlignPlugin from '@kangc/v-md-editor/lib/plugins/align'
 
-import createEmojiPlugin from '@kangc/v-md-editor/lib/plugins/emoji/index'
-import '@kangc/v-md-editor/lib/plugins/emoji/emoji.css'
+// import createEmojiPlugin from '@kangc/v-md-editor/lib/plugins/emoji/index'
+// import '@kangc/v-md-editor/lib/plugins/emoji/emoji.css'
 // import createMermaidPlugin from '@kangc/v-md-editor/lib/plugins/mermaid/cdn'
 // import '@kangc/v-md-editor/lib/plugins/mermaid/mermaid.css'
 
@@ -65,7 +65,7 @@ VMdPreview.use(createLineNumbertPlugin())
 VMdPreview.use(createHighlightLinesPlugin())
 VMdPreview.use(createCopyCodePlugin())
 VMdPreview.use(createAlignPlugin())
-VMdPreview.use(createEmojiPlugin())
+// VMdPreview.use(createEmojiPlugin())
 // VMdPreview.use(createMermaidPlugin())
 
 VMdPreview.lang.use('zh-CN', zhCN)

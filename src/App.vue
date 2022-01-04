@@ -31,9 +31,10 @@ export default {
     this.getArticleList()
     this.getCategoryList()
     this.getTagList()
+    this.getSeriesList()
   },
   methods: {
-    ...Vuex.mapActions(['getArticleList', 'getCategoryList', 'getTagList'])
+    ...Vuex.mapActions(['getArticleList', 'getCategoryList', 'getTagList', 'getSeriesList'])
   }
 }
 </script>
