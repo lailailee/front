@@ -118,7 +118,7 @@ const actions = {
       }
       const res = await Api.getSeriesList(params)
       if (res.code === 0) {
-        const { list, count } = res.data
+        const { list } = res.data
         const seriesList = []
         list.forEach(e => {
           if (e.articleCount > 0) {
