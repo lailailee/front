@@ -5,7 +5,7 @@
       image="http://lailailee.oss-cn-chengdu.aliyuncs.com/%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/web_resource/images/banner2.png"
     />
     <div class="bottom">
-      <container type="tag">
+      <container type="tag_list">
         <subject
           :title="`标签 : ${name} - ${list.length}`"
           :list="list"
@@ -17,7 +17,7 @@
 
 <script>
 import Api from '@/api/index'
-
+import Vuex from 'vuex'
 export default {
   name: 'TagList',
   components: {},
@@ -27,7 +27,13 @@ export default {
       name: this.$route.params.name
     }
   },
-  computed: {},
+  computed: {
+    ...Vuex.mapState([
+      // 映射 this.count 为 store.state.count
+      'tagList'
+      // 'articleTotal'
+    ])
+  },
   watch: {},
   created() {
 
@@ -43,6 +49,14 @@ export default {
         const search = ''
         const page = 1
         const tagId = this.$route.params.id
+        if (this.tagList.some(e => {
+          if (e.id === tagId) {
+            this.list = e.articles
+            return true
+          }
+        })) {
+          return
+        }
         const params = {
           search,
           limit,

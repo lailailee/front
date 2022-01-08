@@ -126,7 +126,6 @@ export default {
       smartypants: false // 使用更为时髦的标点，比如在引用语法中加入破折号。
     })
     // this.code = marked(this.code)
-    console.log(this.test)
   },
   methods: {}
 }

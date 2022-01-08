@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div id="category">
     <banner
       name="分类"
       image="http://lailailee.oss-cn-chengdu.aliyuncs.com/%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/web_resource/images/banner2.png"
@@ -71,7 +71,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.home {
+#category {
   min-height: calc(100vh - 350px);
   .top {
     user-select: none;

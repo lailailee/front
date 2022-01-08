@@ -224,19 +224,14 @@ export default {
 
   },
   mounted() {
-    // var scrollFunc = (e) => {
-    //   e = e || window.event
-    //   console.log('window.clientTop()', window.pageYOffset)
-    //   if (e.scrollTop() > 800) {
-    //     this.isFixed = true
-    //   } else {
-    //     this.isFixed = false
-    //   }
-    // }
-    // document.addEventListener('DOMMouseScroll', scrollFunc, false)
-    // window.onmousewheel = document.onmousewheel = scrollFunc
+    // this.getArticleList()
+    // this.getCategoryList()
+    // this.getTagList()
+    // this.getSeriesList()
   },
   methods: {
+    // ...Vuex.mapActions(['getArticleList', 'getCategoryList', 'getTagList', 'getSeriesList']),
+    // ...Vuex.mapActions(['getArticleList', 'getCategoryList', 'getTagList', 'getSeriesList']),
     skipToGithub() {
       window.open('https://github.com/lailailee')
     },

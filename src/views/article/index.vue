@@ -130,7 +130,7 @@
 // /* eslint-disable no-undef */
 import test from './test.md'
 import Api from '@/api/index'
-// import Vuex from 'vuex'
+import Vuex from 'vuex'
 export default {
   name: 'Artcicle',
   components: {},
@@ -147,7 +147,8 @@ export default {
           name: '',
           articles: []
         },
-        seriesId: 0
+        seriesId: 0,
+        content: ''
       },
       // styleVar: {
       //   '--content': `'${this.seriesName}'`
@@ -156,6 +157,12 @@ export default {
     }
   },
   computed: {
+    ...Vuex.mapState([
+      // 映射 this.count 为 store.state.count
+      'articleList',
+      'articleTotal'
+      // 'articleTotal'
+    ]),
     seriesName() {
       if (this.articleDetail.seriesId === 0) {
         return ''
@@ -171,14 +178,11 @@ export default {
   mounted() {
 
   },
-
   methods: {
     getTittle() {
       try {
-        console.log(this.$refs.preview)
         const anchors = this.$refs.preview?.$el.querySelectorAll('h1,h2,h3')
         // ,h4,h5,h6
-        console.log(anchors)
         const titles = Array.from(anchors).filter((title) => !!title.innerText.trim())
 
         if (!titles.length) {
@@ -197,21 +201,34 @@ export default {
       }
     },
     consolelog() {
-      console.log(this.$refs.preview)
     },
     // getArticleDetail
     async getArticleDetail() {
       try {
+        let sleep = 0
         const id = this.$route.params.aid
-        const res = await Api.getArticleDetail(id)
-        if (res.code === 0) {
-          this.articleDetail = res.data
-          setTimeout(() => {
-            this.getTittle()
-          }, 500)
-        } else {
-          console.error(res.message)
+        if (this.articleList.some(e => {
+          if (e.id === id) {
+            this.articleDetail = e
+            setTimeout(() => {
+              this.getTittle()
+            }, 300)
+            return true
+          }
+        })) {
+          sleep = 500
         }
+        setTimeout(async() => {
+          const res = await Api.getArticleDetail(id)
+          if (res.code === 0) {
+            this.articleDetail = res.data
+            setTimeout(() => {
+              this.getTittle()
+            }, 300)
+          } else {
+            console.error(res.message)
+          }
+        }, sleep)
       } catch (error) {
         console.error(error)
       }

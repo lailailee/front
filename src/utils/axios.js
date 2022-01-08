@@ -1,7 +1,7 @@
 // Encapsulate the axios request and return the repackaged data format
 import axios from 'axios'
 import errorHandle from './errorHandle'
-import baseConfig from '@/config'
+// import baseConfig from '@/config'
 
 class HttpRequest {
   constructor(baseUrl) {
@@ -37,12 +37,11 @@ class HttpRequest {
     // 请求拦截器
     instance.interceptors.request.use(
       config => {
-        console.log('interceptors', baseConfig.company)
         // config.headers.Company = baseConfig.company
         return config
       },
       err => {
-        // debugger
+        //
         errorHandle(err)
         // Do something with request error
         return Promise.reject(err)
@@ -92,7 +91,6 @@ class HttpRequest {
       err => {
         // Any status codes that falls outside the range of 2xx cause this function to trigger
         // Do something with response error
-        // debugger
         errorHandle(err)
         return Promise.reject(err)
       }

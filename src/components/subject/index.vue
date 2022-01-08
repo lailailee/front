@@ -12,7 +12,7 @@
           @click="skip(item.id)"
         >{{ item.title }}</div>
         <div class="date item">
-          <i class="iconfont riqi" /> {{ item.createdAt }}
+          <i class="iconfont riqi" /> {{ date(item.createdAt) }}
         </div>
       </div>
     </div>
@@ -25,6 +25,17 @@ export default {
   name: 'Subject',
   components: {},
   props: ['title', 'list'],
+  computed: {
+    date() {
+      return (str) => {
+        // 2021-10-25T23:52:18+08:00
+        if (str.includes('T')) {
+          str = str.split('T')[0] + ' ' + str.split('T')[1].split(':')[0] + ':' + str.split('T')[1].split(':')[1]
+        }
+        return str
+      }
+    }
+  },
   methods: {
     skip(aid) {
       this.$router.push({ name: 'article', params: { aid: aid }})

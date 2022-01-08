@@ -78,7 +78,6 @@ const Tool = {
       if (timer) {
         clearTimeout(timer)
       }
-      debugger
       timer = setTimeout(fn, delay) // 简化写法
     }
   },

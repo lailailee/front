@@ -5,7 +5,7 @@
       image="http://lailailee.oss-cn-chengdu.aliyuncs.com/%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/web_resource/images/banner2.png"
     />
     <div class="bottom">
-      <container type="category">
+      <container type="category_list">
         <subject
           :title="`分类 : ${name} - ${list.length}`"
           :list="list"
@@ -32,7 +32,7 @@ export default {
   computed: {
     ...Vuex.mapState([
       // 映射 this.count 为 store.state.count
-      // 'articleList',
+      'categoryList'
       // 'articleTotal'
     ]),
     setStyle() {
@@ -59,12 +59,22 @@ export default {
         const search = ''
         const page = 1
         const categoryId = this.$route.params.id
+
+        if (this.categoryList.some(e => {
+          if (e.id === categoryId) {
+            this.list = e.articles
+            return true
+          }
+        })) {
+          return
+        }
         const params = {
           search,
           limit,
           page,
           categoryId
         }
+
         const res = await Api.getArticleList(params)
         if (res.code === 0) {
           const { list } = res.data

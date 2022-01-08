@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div id="home">
     <div class="top">
       <div class="info">
         <div class="mask">
@@ -192,7 +192,7 @@ export default {
     filter: alpha(opacity=40);
   }
 }
-.home {
+#home {
   // transition: all 0.5s;
   min-height: calc(100vh - 350px);
   .top {

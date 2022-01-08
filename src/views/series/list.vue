@@ -5,7 +5,7 @@
       image="http://lailailee.oss-cn-chengdu.aliyuncs.com/%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/web_resource/images/banner2.png"
     />
     <div class="bottom">
-      <container type="series">
+      <container type="series_list">
         <subject
           :title="`系列: ${name} - ${list.length}`"
           :list="list"
@@ -49,6 +49,15 @@ export default {
         const search = ''
         const page = 1
         const seriesId = this.$route.params.id
+
+        if (this.seriesList.some(e => {
+          if (e.id === seriesId) {
+            this.list = e.articles
+            return true
+          }
+        })) {
+          return
+        }
         const params = {
           search,
           limit,

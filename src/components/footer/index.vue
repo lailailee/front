@@ -1,7 +1,7 @@
 <template>
   <div class="footer">
     <div>
-      <div>©2021 - 2022 v1.0.1 By Lailailee</div>
+      <div>©2021 - 2022 v1.0.2 By Lailailee</div>
     </div>
   </div>
 </template>

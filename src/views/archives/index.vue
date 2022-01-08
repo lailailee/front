@@ -45,11 +45,11 @@ export default {
 
   },
   mounted() {
-    setInterval(() => {
-      if (this.articleList.length < this.articleTotal) {
-        this.getArticleList()
-      }
-    }, 500)
+    // setInterval(async() => {
+    //   if (this.articleList.length < this.articleTotal) {
+    //     await this.getArticleList()
+    //   }
+    // }, 500)
   },
   methods: {
     ...Vuex.mapActions(['getArticleList'])

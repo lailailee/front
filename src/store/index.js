@@ -69,10 +69,8 @@ const actions = {
       }
       const res = await Api.getCategoryList(params)
       if (res.code === 0) {
-        const { list, count } = res.data
-        console.log(count)
+        const { list } = res.data
         const categoryList0 = list.sort((a, b) => b.articleCount - a.articleCount)
-        console.log(categoryList0)
         const categoryList = []
         categoryList0.forEach(e => {
           if (e.articleCount > 0) {
@@ -96,8 +94,7 @@ const actions = {
       }
       const res = await Api.getTagList(params)
       if (res.code === 0) {
-        const { list, count } = res.data
-        console.log(count)
+        const { list } = res.data
         const tagList = []
         list.forEach(e => {
           if (e.articleCount > 0) {
@@ -122,7 +119,6 @@ const actions = {
       const res = await Api.getSeriesList(params)
       if (res.code === 0) {
         const { list, count } = res.data
-        console.log(count)
         const seriesList = []
         list.forEach(e => {
           if (e.articleCount > 0) {
